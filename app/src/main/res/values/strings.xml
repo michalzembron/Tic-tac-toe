@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">TicTacToe</string>
+    <string name="play">Zagraj</string>
+    <string name="statistics">Statystyki</string>
+    <string name="shop">Sklep</string>
+    <string name="settings">Ustawienia</string>
+    <string name="exit">Wyjdź</string>
+    <string name="theme">Motywy</string>
+    <string name="skin">Skórki</string>
 </resources>
