@@ -7,7 +7,19 @@
     tools:context=".PlayActivity">
 
     <ImageButton
-        android:id="@+id/imageButton"
+        android:id="@+id/Button_Singleplayer"
+        android:layout_width="83dp"
+        android:layout_height="60dp"
+        app:color="@color/purple_500"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.467"
+        app:srcCompat="@drawable/ic_person_black_24dp" />
+
+    <ImageButton
+        android:id="@+id/Button_Multiplayer"
         android:layout_width="83dp"
         android:layout_height="60dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -18,15 +30,4 @@
         app:srcCompat="@drawable/ic_people_alt_black_24dp"
         app:color="@color/purple_500"/>
 
-    <ImageButton
-        android:id="@+id/imageButton2"
-        android:layout_width="83dp"
-        android:layout_height="60dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.467"
-        app:srcCompat="@drawable/ic_person_black_24dp"
-        app:color="@color/purple_500"/>
 </androidx.constraintlayout.widget.ConstraintLayout>
