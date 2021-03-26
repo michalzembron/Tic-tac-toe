@@ -7,13 +7,14 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
 public class Play_Singleplayer extends AppCompatActivity implements View.OnClickListener{
 
     private TextView playerOneScore, playerTwoScore, playerStatus;
-    private Button [] buttons = new Button[9];
+    private ImageButton [] buttons = new ImageButton[9];
     private Button resetGame;
 
     private int playerOneScoreCount, playerTwoScoreCount, roundCount;
@@ -50,42 +51,27 @@ public class Play_Singleplayer extends AppCompatActivity implements View.OnClick
         */
 
         //Log.d("DEBUG", "board: " + Arrays.deepToString(board));
-
-        playerOneScore = (TextView) findViewById(R.id.playerOneScore);
-        playerTwoScore = (TextView) findViewById(R.id.playerTwoScore);
-        playerStatus = (TextView) findViewById(R.id.playerStatus);
-
-        resetGame = (Button) findViewById(R.id.resetGame);
-
-        for (int i = 0; i < buttons.length; i++){
-            String buttonID = "btn_" + i;
-            int resourceID = getResources().getIdentifier(buttonID, "id", getPackageName());
-            buttons[i] = (Button) findViewById(resourceID);
-            buttons[i].setOnClickListener(this);
-        }
-
-        roundCount = 0;
-        playerOneScoreCount = 0;
-        playerTwoScoreCount = 0;
-        activePlayer = true;
+        AssignVariables();
     }
 
     @Override
     public void onClick(View v) {
         Log.i("test", "button nacisniety!");
-        if (!((Button)v).getText().toString().equals("")){
+        if (v.getTag()!="2")
+        {
             return;
         }
         String buttonID = v.getResources().getResourceEntryName(v.getId());
         int gameStatePointer = Integer.parseInt(buttonID.substring(buttonID.length()-1, buttonID.length()));
 
         if (activePlayer){
-            ((Button) v).setText("X");
-            ((Button) v).setTextColor(Color.parseColor("#FFC34A"));
+            //TODO: zrobic rozne ikonki albo standaryzacje
+            ((ImageButton) v).setImageResource(R.drawable.ic_person_black_24dp);
+            v.setTag("0");
             gameState[gameStatePointer] = 0;
         } else {
-            ((Button) v).setText("O");
-            ((Button) v).setTextColor(Color.parseColor("#70FFEA"));
+            ((ImageButton) v).setImageResource(R.drawable.ic_people_alt_black_24dp);
+            v.setTag("1");
             gameState[gameStatePointer] = 1;
         }
         roundCount++;
@@ -153,7 +139,29 @@ public class Play_Singleplayer extends AppCompatActivity implements View.OnClick
         activePlayer = true;
         for(int i = 0; i < buttons.length; i++){
             gameState[i] = 2;
-            buttons[i].setText("");
+            buttons[i].setImageResource(R.drawable.ic_launcher_background);
+            buttons[i].setTag("2");
         }
+    }
+
+    private void AssignVariables()
+    {
+        playerOneScore = (TextView) findViewById(R.id.playerOneScore);
+        playerTwoScore = (TextView) findViewById(R.id.playerTwoScore);
+        playerStatus = (TextView) findViewById(R.id.playerStatus);
+        resetGame = (Button) findViewById(R.id.resetGame);
+
+        for (int i = 0; i < buttons.length; i++){
+            String buttonID = "im_btn" + i;
+            int resourceID = getResources().getIdentifier(buttonID, "id", getPackageName());
+            buttons[i] = (ImageButton) findViewById(resourceID);
+            buttons[i].setOnClickListener(this);
+            buttons[i].setTag("2");
+        }
+
+        roundCount = 0;
+        playerOneScoreCount = 0;
+        playerTwoScoreCount = 0;
+        activePlayer = true;
     }
 }
