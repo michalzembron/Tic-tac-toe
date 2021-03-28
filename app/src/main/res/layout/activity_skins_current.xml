@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".skins.SkinsCurrentActivity">
+
+    <ImageButton
+        android:id="@+id/skin_X_0"
+        android:layout_width="130dp"
+        android:layout_height="130dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginLeft="5dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+    <TextView
+        android:id="@+id/skin_X_0_Text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="5dp"
+        android:text="Current X skin, tap to change it !"
+        android:textAlignment="viewStart"
+        android:visibility="visible"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/skin_X_0"
+        app:layout_constraintTop_toTopOf="@+id/skin_X_0"
+        app:layout_constraintBottom_toBottomOf="@+id/skin_X_0"/>
+
+    <ImageButton
+        android:id="@+id/skin_O_0"
+        android:layout_width="130dp"
+        android:layout_height="130dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginLeft="5dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/skin_X_0" />
+
+    <TextView
+        android:id="@+id/skin_O_0_Text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="5dp"
+        android:text="Current O skin, tap to change it !"
+        android:textAlignment="viewStart"
+        android:visibility="visible"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/skin_O_0"
+        app:layout_constraintTop_toTopOf="@+id/skin_O_0"
+        app:layout_constraintBottom_toBottomOf="@+id/skin_O_0" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

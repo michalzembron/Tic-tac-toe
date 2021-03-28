@@ -4,8 +4,10 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.Button;
+
+import com.example.tictactoe.skins.SkinsChangerXActivity;
+import com.example.tictactoe.skins.SkinsCurrentActivity;
 
 public class SettingsActivity extends AppCompatActivity {
 
@@ -16,7 +18,7 @@ public class SettingsActivity extends AppCompatActivity {
 
         Button buttonSkins = findViewById(R.id.buttonSkins);
         buttonSkins.setOnClickListener(view -> {
-            Intent intent = new Intent(view.getContext(), SettingsActivity.class);
+            Intent intent = new Intent(view.getContext(), SkinsCurrentActivity.class);
             view.getContext().startActivity(intent);});
     }
 }
