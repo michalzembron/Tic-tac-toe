@@ -7,4 +7,6 @@
     <string name="exit">Wyjdź</string>
     <string name="theme">Motywy</string>
     <string name="skin">Skórki</string>
+    <string name="p1Winning">Player One is Winning !</string>
+    <string name="p2Winning">Player Two is Winning !</string>
 </resources>

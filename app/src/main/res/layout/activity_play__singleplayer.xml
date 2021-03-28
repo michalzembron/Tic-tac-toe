@@ -57,7 +57,8 @@
         android:textSize="20sp"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/playerOneScore" />
+        app:layout_constraintTop_toBottomOf="@+id/playerOneScore"
+        />
 
     <Button
         android:id="@+id/resetGame"
@@ -71,97 +72,97 @@
         android:textStyle="bold"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/im_btn7" />
+        app:layout_constraintTop_toBottomOf="@+id/im_btn7"
+        />
 
     <ImageButton
         android:id="@+id/im_btn0"
         android:layout_width="130dp"
         android:layout_height="130dp"
-        android:layout_marginStart="4dp"
-        android:layout_marginTop="4dp"
+        android:layout_marginStart="1dp"
+        android:layout_marginTop="1dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/playerStatus"
-        app:srcCompat="@drawable/ic_launcher_background" />
+        />
 
     <ImageButton
         android:id="@+id/im_btn1"
         android:layout_width="130dp"
         android:layout_height="130dp"
-        android:layout_marginStart="4dp"
-        android:layout_marginTop="4dp"
+        android:layout_marginStart="1dp"
+        android:layout_marginTop="1dp"
         app:layout_constraintStart_toEndOf="@+id/im_btn0"
         app:layout_constraintTop_toBottomOf="@+id/playerStatus"
-        app:srcCompat="@drawable/ic_launcher_background" />
+        />
 
     <ImageButton
         android:id="@+id/im_btn2"
         android:layout_width="130dp"
         android:layout_height="130dp"
-        android:layout_marginStart="4dp"
-        android:layout_marginTop="4dp"
+        android:layout_marginStart="1dp"
+        android:layout_marginTop="1dp"
         app:layout_constraintStart_toEndOf="@+id/im_btn1"
         app:layout_constraintTop_toBottomOf="@+id/playerStatus"
-        app:srcCompat="@drawable/ic_launcher_background" />
+        />
 
     <ImageButton
         android:id="@+id/im_btn3"
         android:layout_width="130dp"
         android:layout_height="130dp"
-        android:layout_marginStart="4dp"
-        android:layout_marginTop="4dp"
+        android:layout_marginStart="1dp"
+        android:layout_marginTop="1dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/im_btn0"
-        app:srcCompat="@drawable/ic_launcher_background" />
+        />
 
     <ImageButton
         android:id="@+id/im_btn4"
         android:layout_width="130dp"
         android:layout_height="130dp"
-        android:layout_marginStart="4dp"
-        android:layout_marginTop="4dp"
+        android:layout_marginStart="1dp"
+        android:layout_marginTop="1dp"
         app:layout_constraintStart_toEndOf="@+id/im_btn3"
         app:layout_constraintTop_toBottomOf="@+id/im_btn1"
-        app:srcCompat="@drawable/ic_launcher_background" />
+        />
 
     <ImageButton
         android:id="@+id/im_btn5"
         android:layout_width="130dp"
         android:layout_height="130dp"
-        android:layout_marginStart="4dp"
-        android:layout_marginTop="4dp"
+        android:layout_marginStart="1dp"
+        android:layout_marginTop="1dp"
         app:layout_constraintStart_toEndOf="@+id/im_btn4"
         app:layout_constraintTop_toBottomOf="@+id/im_btn2"
-        app:srcCompat="@drawable/ic_launcher_background" />
+        />
 
     <ImageButton
         android:id="@+id/im_btn6"
         android:layout_width="130dp"
         android:layout_height="130dp"
-        android:layout_marginStart="4dp"
-        android:layout_marginTop="4dp"
+        android:layout_marginStart="1dp"
+        android:layout_marginTop="1dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/im_btn3"
-        app:srcCompat="@drawable/ic_launcher_background" />
+        />
 
     <ImageButton
         android:id="@+id/im_btn7"
         android:layout_width="130dp"
         android:layout_height="130dp"
-        android:layout_marginStart="4dp"
-        android:layout_marginTop="4dp"
+        android:layout_marginStart="1dp"
+        android:layout_marginTop="1dp"
         app:layout_constraintStart_toEndOf="@+id/im_btn6"
         app:layout_constraintTop_toBottomOf="@+id/im_btn4"
-        app:srcCompat="@drawable/ic_launcher_background" />
+        />
 
     <ImageButton
         android:id="@+id/im_btn8"
         android:layout_width="130dp"
         android:layout_height="130dp"
-        android:layout_marginStart="4dp"
-        android:layout_marginTop="4dp"
+        android:layout_marginStart="1dp"
+        android:layout_marginTop="1dp"
         app:layout_constraintStart_toEndOf="@+id/im_btn7"
         app:layout_constraintTop_toBottomOf="@+id/im_btn5"
-        app:srcCompat="@drawable/ic_launcher_background" />
-
+        />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
