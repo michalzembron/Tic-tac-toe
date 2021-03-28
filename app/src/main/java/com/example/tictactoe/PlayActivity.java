@@ -4,8 +4,6 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
-import android.widget.Button;
 import android.widget.ImageButton;
 
 public class PlayActivity extends AppCompatActivity {
@@ -17,7 +15,7 @@ public class PlayActivity extends AppCompatActivity {
 
         ImageButton buttonSingleplayer = findViewById(R.id.Button_Singleplayer);
         buttonSingleplayer.setOnClickListener(view -> {
-            Intent intent = new Intent(view.getContext(), Play_Singleplayer.class);
+            Intent intent = new Intent(view.getContext(), PlaySingleplayerActivity.class);
             view.getContext().startActivity(intent);});
     }
 }

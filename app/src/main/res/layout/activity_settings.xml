@@ -7,7 +7,7 @@
     tools:context=".SettingsActivity">
 
     <Button
-        android:id="@+id/buttonTheme"
+        android:id="@+id/buttonThemes"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/theme"
@@ -18,7 +18,7 @@
         app:layout_constraintVertical_bias="0.402" />
 
     <Button
-        android:id="@+id/buttonSkin"
+        android:id="@+id/buttonSkins"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/skin"

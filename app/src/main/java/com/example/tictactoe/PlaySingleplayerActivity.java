@@ -4,14 +4,13 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class Play_Singleplayer extends AppCompatActivity implements View.OnClickListener{
+public class PlaySingleplayerActivity extends AppCompatActivity implements View.OnClickListener{
 
     private TextView playerOneScore, playerTwoScore, playerStatus;
     private final ImageButton [] buttons = new ImageButton[9];
@@ -36,7 +35,7 @@ public class Play_Singleplayer extends AppCompatActivity implements View.OnClick
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_play__singleplayer);
+        setContentView(R.layout.activity_play_singleplayer);
         AssignVariables();
     }
 
