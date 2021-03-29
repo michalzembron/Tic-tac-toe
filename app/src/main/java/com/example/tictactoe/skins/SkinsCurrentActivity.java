@@ -16,12 +16,12 @@ public class SkinsCurrentActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_skins_current);
 
-        ImageButton buttonSkinsChangerX = findViewById(R.id.skin_X_0);
+        ImageButton buttonSkinsChangerX = findViewById(R.id.skin_X);
         buttonSkinsChangerX.setOnClickListener(view -> {
             Intent intent = new Intent(view.getContext(), SkinsChangerXActivity.class);
             view.getContext().startActivity(intent);});
 
-        ImageButton buttonSkinsChangerO = findViewById(R.id.skin_O_0);
+        ImageButton buttonSkinsChangerO = findViewById(R.id.skin_O);
         buttonSkinsChangerO.setOnClickListener(view -> {
             Intent intent = new Intent(view.getContext(), SkinsChangerOActivity.class);
             view.getContext().startActivity(intent);});

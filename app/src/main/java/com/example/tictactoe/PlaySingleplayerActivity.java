@@ -50,11 +50,11 @@ public class PlaySingleplayerActivity extends AppCompatActivity implements View.
 
         if (activePlayer){
             //TODO: zrobic rozne ikonki albo standaryzacje
-            ((ImageButton) v).setImageResource(R.drawable.ic_person_black_24dp);
+            ((ImageButton) v).setImageResource(R.drawable.ic_skins_x_0);
             v.setTag("1");
             gameState[gameStatePointer] = 1;
         } else {
-            ((ImageButton) v).setImageResource(R.drawable.ic_people_alt_black_24dp);
+            ((ImageButton) v).setImageResource(R.drawable.ic_skins_o_0);
             v.setTag("2");
             gameState[gameStatePointer] = 2;
         }
