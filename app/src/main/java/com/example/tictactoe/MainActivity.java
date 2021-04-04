@@ -4,9 +4,11 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-import android.widget.Toast;
+
+import com.example.tictactoe.installation.Installation;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -14,6 +16,10 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        //Generowanie i/lub odczyt ID uzytkownika
+        Installation.id(this);
+        Log.i("______User ID", Installation.id(this));
 
         Button buttonPlay = findViewById(R.id.buttonPlay);
         buttonPlay.setOnClickListener(new View.OnClickListener() {
