@@ -12,7 +12,7 @@ public class Connection {
         database = FirebaseDatabase.getInstance();
     }
 
-    public DatabaseReference getDatabaseReference(String url){
-        return ref = database.getReference(url);
+    public DatabaseReference getDatabaseReference(){
+        return ref = database.getReference();
     }
 }

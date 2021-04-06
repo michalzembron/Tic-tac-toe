@@ -49,14 +49,6 @@ public class PlaySingleplayerActivity extends AppCompatActivity implements View.
     @Override
     public void onClick(View v) {
 
-        FirebaseDatabase.getInstance().getReference().child("Users").setValue("ssssssss");
-        Connection connection = new Connection();
-        //DatabaseReference ref = connection.getDatabaseReference("Users");
-
-       // DatabaseReference ref = FirebaseDatabase.getInstance().getReference();
-
-        Installation installation = new Installation();
-
         if (v.getTag()!="0")
         {
             return;
@@ -81,8 +73,6 @@ public class PlaySingleplayerActivity extends AppCompatActivity implements View.
                 playerOneScoreCount++;
                 UpdatePlayerScore();
                 Toast.makeText(this, "Player One Won!", Toast.LENGTH_SHORT).show();
-             //   ref.child(installation.id(this)).child("Wins").setValue(1);
-                Log.i("Database write!!!!!!!!!", installation.id(this));
             } else {
                 playerTwoScoreCount++;
                 UpdatePlayerScore();
