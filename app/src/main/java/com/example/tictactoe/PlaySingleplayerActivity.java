@@ -4,11 +4,17 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.example.tictactoe.database.Connection;
+import com.example.tictactoe.installation.Installation;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 public class PlaySingleplayerActivity extends AppCompatActivity implements View.OnClickListener{
 
@@ -37,10 +43,20 @@ public class PlaySingleplayerActivity extends AppCompatActivity implements View.
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_play_singleplayer);
         AssignVariables();
+
     }
 
     @Override
     public void onClick(View v) {
+
+        FirebaseDatabase.getInstance().getReference().child("Users").setValue("ssssssss");
+        Connection connection = new Connection();
+        //DatabaseReference ref = connection.getDatabaseReference("Users");
+
+       // DatabaseReference ref = FirebaseDatabase.getInstance().getReference();
+
+        Installation installation = new Installation();
+
         if (v.getTag()!="0")
         {
             return;
@@ -65,6 +81,8 @@ public class PlaySingleplayerActivity extends AppCompatActivity implements View.
                 playerOneScoreCount++;
                 UpdatePlayerScore();
                 Toast.makeText(this, "Player One Won!", Toast.LENGTH_SHORT).show();
+             //   ref.child(installation.id(this)).child("Wins").setValue(1);
+                Log.i("Database write!!!!!!!!!", installation.id(this));
             } else {
                 playerTwoScoreCount++;
                 UpdatePlayerScore();
