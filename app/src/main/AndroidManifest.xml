@@ -10,7 +10,8 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.TicTacToe">
+        android:theme="@style/Theme.TicTacToe"
+        android:name="com.example.tictactoe.GetContext">
         <activity android:name=".skins.SkinsChangerOActivity"></activity>
         <activity android:name=".skins.SkinsCurrentActivity" />
         <activity android:name=".skins.SkinsChangerXActivity" />
@@ -27,5 +28,4 @@
             </intent-filter>
         </activity>
     </application>
-
 </manifest>

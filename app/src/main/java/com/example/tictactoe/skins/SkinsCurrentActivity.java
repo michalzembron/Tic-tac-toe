@@ -25,5 +25,10 @@ public class SkinsCurrentActivity extends AppCompatActivity {
         buttonSkinsChangerO.setOnClickListener(view -> {
             Intent intent = new Intent(view.getContext(), SkinsChangerOActivity.class);
             view.getContext().startActivity(intent);});
+
+        Skins skins = new Skins();
+        skins.getCurrentXSkin();
+        skins.getCurrentOSkin();
+        skins.getUnlockedSkins();
     }
 }
