@@ -23,7 +23,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="25dp"
                 android:layout_marginTop="25dp"
-                android:background="#A643CD49"
+                android:background="#A6858585"
                 android:drawableStart="@drawable/ic_skins_o_0"
                 android:text="@string/skin_o_0_description" />
 

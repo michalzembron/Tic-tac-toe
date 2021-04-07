@@ -13,6 +13,7 @@ import android.widget.Toast;
 
 import com.example.tictactoe.database.Connection;
 import com.example.tictactoe.installation.Installation;
+import com.example.tictactoe.skins.Skins;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -38,6 +39,8 @@ public class PlaySingleplayerActivity extends AppCompatActivity implements View.
             {0,4,8}, {2,4,6} //na krzyz
     };
 
+    Skins skins = new Skins();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -58,11 +61,11 @@ public class PlaySingleplayerActivity extends AppCompatActivity implements View.
 
         if (activePlayer){
             //TODO: zrobic rozne ikonki albo standaryzacje
-            ((ImageButton) v).setImageResource(R.drawable.ic_skins_x_0);
+            ((ImageButton) v).setImageResource(getResources().getIdentifier(skins.getCurrentXSkin(), "drawable", getPackageName()));
             v.setTag("1");
             gameState[gameStatePointer] = 1;
         } else {
-            ((ImageButton) v).setImageResource(R.drawable.ic_skins_o_0);
+            ((ImageButton) v).setImageResource(getResources().getIdentifier(skins.getCurrentOSkin(), "drawable", getPackageName()));
             v.setTag("2");
             gameState[gameStatePointer] = 2;
         }

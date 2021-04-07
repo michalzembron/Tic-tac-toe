@@ -31,30 +31,33 @@ public class Skins {
         editor.apply();
     }
 
-    public void getUnlockedSkins(){
+    public String getUnlockedSkins(){
         SharedPreferences settings = GetContext.getAppContext().getSharedPreferences("unlockedSkinsSettings", 0);
         unlocked_skins = (settings.getString("unlocked_skins_list", ""));
         if (unlocked_skins.equals("")){
             setUnlockedSkins("ic_skins_x_0;ic_skins_o_0;ic_skins_1;");
         }
         Log.i("---getUnlocked_skins", unlocked_skins);
+        return unlocked_skins;
     }
 
-    public void getCurrentXSkin(){
+    public String getCurrentXSkin(){
         SharedPreferences settings = GetContext.getAppContext().getSharedPreferences("XSkinSettings", 0);
         CURRENT_X_SKIN = (settings.getString("xSkin", ""));
         if (CURRENT_X_SKIN.equals("")){
             setCurrentXSkin("ic_skins_x_0");
         }
         Log.i("---getCurrentXSkin", CURRENT_X_SKIN);
+        return CURRENT_X_SKIN;
     }
 
-    public void getCurrentOSkin(){
+    public String getCurrentOSkin(){
         SharedPreferences settings = GetContext.getAppContext().getSharedPreferences("OSkinSettings", 0);
         CURRENT_O_SKIN = (settings.getString("oSkin", ""));
         if (CURRENT_O_SKIN.equals("")){
             setCurrentOSkin("ic_skins_o_0");
         }
         Log.i("---getCurrentOSkin", CURRENT_O_SKIN);
+        return CURRENT_O_SKIN;
     }
 }
