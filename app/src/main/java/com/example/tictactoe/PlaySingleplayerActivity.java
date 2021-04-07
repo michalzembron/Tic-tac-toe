@@ -60,7 +60,6 @@ public class PlaySingleplayerActivity extends AppCompatActivity implements View.
         int gameStatePointer = Integer.parseInt(buttonID.substring(buttonID.length()-1));
 
         if (activePlayer){
-            //TODO: zrobic rozne ikonki albo standaryzacje
             ((ImageButton) v).setImageResource(getResources().getIdentifier(skins.getCurrentXSkin(), "drawable", getPackageName()));
             v.setTag("1");
             gameState[gameStatePointer] = 1;
