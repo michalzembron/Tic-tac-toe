@@ -21,7 +21,6 @@ public class MainActivity extends AppCompatActivity {
 
         DatabaseReference database = FirebaseDatabase.getInstance().getReference();
 
-        database.child("user").setValue("madafaka");
         Log.i("TEST", database.getDatabase().getReference().toString());
 
         //Generowanie i/lub odczyt ID uzytkownika
