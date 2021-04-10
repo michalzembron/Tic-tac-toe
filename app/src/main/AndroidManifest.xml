@@ -12,7 +12,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.TicTacToe"
         android:name="com.example.tictactoe.GetContext">
-        <activity android:name=".skins.SkinsChangerOActivity"></activity>
+        <activity android:name=".skins.SkinsChangerOActivity" />
         <activity android:name=".skins.SkinsCurrentActivity" />
         <activity android:name=".skins.SkinsChangerXActivity" />
         <activity android:name=".PlaySingleplayerActivity" />
