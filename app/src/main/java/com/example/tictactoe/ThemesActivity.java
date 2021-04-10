@@ -19,7 +19,7 @@ public class ThemesActivity extends AppCompatActivity {
         // using SharedPreferences
         SharedPreferences sharedPreferences = getSharedPreferences("sharedPrefs", MODE_PRIVATE);
         final SharedPreferences.Editor editor = sharedPreferences.edit();
-        final boolean isDarkModeOn = sharedPreferences.getBoolean("isDarkModeOn", true);
+        final boolean isDarkModeOn = sharedPreferences.getBoolean("isDarkModeOn", false);
 
         Button btnToggleDark = findViewById(R.id.btnToggleDark);
 
