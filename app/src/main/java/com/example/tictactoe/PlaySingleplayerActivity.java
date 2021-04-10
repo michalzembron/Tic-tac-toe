@@ -4,20 +4,18 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.tictactoe.database.Connection;
-import com.example.tictactoe.installation.Installation;
+import com.example.tictactoe.currency.Currency;
 import com.example.tictactoe.skins.Skins;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
 
 public class PlaySingleplayerActivity extends AppCompatActivity implements View.OnClickListener{
+
+    Currency currency = new Currency();
 
     private TextView playerOneScore, playerTwoScore, playerStatus;
     private final ImageButton [] buttons = new ImageButton[9];
@@ -75,6 +73,8 @@ public class PlaySingleplayerActivity extends AppCompatActivity implements View.
                 playerOneScoreCount++;
                 UpdatePlayerScore();
                 Toast.makeText(this, "Player One Won!", Toast.LENGTH_SHORT).show();
+                currency.setCurrency(currency.getCurrency() + 10);
+                Toast.makeText(this, "Player One received +10 currency !", Toast.LENGTH_SHORT).show();
             } else {
                 playerTwoScoreCount++;
                 UpdatePlayerScore();

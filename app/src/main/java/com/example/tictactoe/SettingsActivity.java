@@ -6,7 +6,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
 
-import com.example.tictactoe.skins.SkinsChangerXActivity;
 import com.example.tictactoe.skins.SkinsCurrentActivity;
 
 public class SettingsActivity extends AppCompatActivity {
