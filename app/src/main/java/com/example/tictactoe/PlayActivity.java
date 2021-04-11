@@ -25,7 +25,7 @@ public class PlayActivity extends AppCompatActivity {
         buttonMultiplayer.setOnClickListener(view -> {
             if(arePlayServicesOk())
             {
-                Intent intent = new Intent(view.getContext(), UserListActivity.class);
+                Intent intent = new Intent(view.getContext(), PlayMultiplayerActivity.class);
                 view.getContext().startActivity(intent);
             } });
 
