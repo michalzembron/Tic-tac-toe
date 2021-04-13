@@ -9,6 +9,5 @@
     <string name="skin">Skórki</string>
     <string name="p1Winning">Player One is Winning !</string>
     <string name="p2Winning">Player Two is Winning !</string>
-    <string name="find_game">Find Game</string>
-    <string name="new_game">New Game</string>
+    <string name="join_lobby">Join Lobby</string>
 </resources>

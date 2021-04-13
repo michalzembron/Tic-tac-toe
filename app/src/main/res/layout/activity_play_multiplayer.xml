@@ -10,31 +10,21 @@
         android:id="@+id/new_game"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="72dp"
-        android:layout_marginTop="72dp"
-        android:text="@string/new_game"
+        android:layout_marginStart="148dp"
+        android:layout_marginTop="68dp"
+        android:text="Join Lobby"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextNumber" />
-
-    <Button
-        android:id="@+id/find_game"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="44dp"
-        android:layout_marginTop="72dp"
-        android:text="@string/find_game"
-        app:layout_constraintStart_toEndOf="@+id/new_game"
-        app:layout_constraintTop_toBottomOf="@+id/editTextNumber" />
+        app:layout_constraintTop_toBottomOf="@+id/game_code" />
 
     <EditText
-        android:id="@+id/editTextNumber"
+        android:id="@+id/game_code"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="100dp"
         android:layout_marginTop="352dp"
         android:ems="10"
+        android:hint="Game Code"
         android:inputType="number"
-        android:text="Game code"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 

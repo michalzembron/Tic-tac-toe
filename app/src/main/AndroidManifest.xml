@@ -11,7 +11,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.TicTacToe">
-        <activity android:name=".MultiplayerBoardActivity"></activity>
+        <activity android:name=".BoardMultiplayerActivity"></activity>
+        <activity android:name=".MultiplayerBoardActivity" />
         <activity android:name=".PlayMultiplayerActivity" />
         <activity android:name=".PlaySingleplayerActivity" />
         <activity android:name=".SettingsActivity" />
