@@ -21,6 +21,9 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class PlayMultiplayerActivity extends AppCompatActivity {
 
     private DatabaseReference mDatabase;
@@ -50,15 +53,20 @@ public class PlayMultiplayerActivity extends AppCompatActivity {
                             if(isFirstSlotFree)
                             {
                                 mDatabase.child("Games").child(gameCode).child("player1").setValue(id);
+                                mDatabase.child("Games").child(gameCode).child("gameboard").setValue("000000000");
                                 Intent intent = new Intent(view.getContext(), BoardMultiplayerActivity.class);
                                 intent.putExtra("gameCode", gameCode);
+                                intent.putExtra("isFirst",true);
                                 startActivity(intent);
+
                             }
                             else if(isSecondSlotFree)
                             {
                                 mDatabase.child("Games").child(gameCode).child("player2").setValue(id);
+                                mDatabase.child("Games").child(gameCode).child("gameboard").setValue("000000000");;
                                 Intent intent = new Intent(view.getContext(), BoardMultiplayerActivity.class);
                                 intent.putExtra("gameCode", gameCode);
+                                intent.putExtra("isFirst",false);
                                 startActivity(intent);
                             }
                             else Toast.makeText(PlayMultiplayerActivity.this, "Room already full", Toast.LENGTH_SHORT).show();
