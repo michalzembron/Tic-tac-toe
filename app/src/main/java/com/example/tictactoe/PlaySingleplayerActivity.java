@@ -11,11 +11,12 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.tictactoe.currency.Currency;
+import com.example.tictactoe.database.User;
 import com.example.tictactoe.skins.Skins;
 
 public class PlaySingleplayerActivity extends AppCompatActivity implements View.OnClickListener{
-
     Currency currency = new Currency();
+    User user = new User();
 
     private TextView playerOneScore, playerTwoScore, playerStatus;
     private final ImageButton [] buttons = new ImageButton[9];
@@ -75,15 +76,18 @@ public class PlaySingleplayerActivity extends AppCompatActivity implements View.
                 Toast.makeText(this, "Player One Won!", Toast.LENGTH_SHORT).show();
                 currency.setCurrency(currency.getCurrency() + 10);
                 Toast.makeText(this, "Player One received +10 currency !", Toast.LENGTH_SHORT).show();
+                user.changeValueInDatabase("Wins");
             } else {
                 playerTwoScoreCount++;
                 UpdatePlayerScore();
                 Toast.makeText(this, "Player Two Won!", Toast.LENGTH_SHORT).show();
+                user.changeValueInDatabase("Losts");
             }
             PlayAgain();
         } else if (roundCount == 9) {
             PlayAgain();
             Toast.makeText(this, "No Winner!", Toast.LENGTH_SHORT).show();
+            user.changeValueInDatabase("Draws");
         } else {
             activePlayer = !activePlayer;
         }
