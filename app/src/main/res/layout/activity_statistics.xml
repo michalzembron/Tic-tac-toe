@@ -26,7 +26,7 @@
                     android:id="@+id/totalWins"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Total Wins: "
+                    android:text="Wins: "
                     android:textSize="16sp"
                     android:layout_marginStart="5dp"/>
 
@@ -34,7 +34,7 @@
                     android:id="@+id/totalWinsAmount"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="10"
+                    android:text="TBD"
                     android:textSize="16sp"/>
             </LinearLayout>
 
@@ -47,7 +47,7 @@
                     android:id="@+id/totalLost"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Total Lost: "
+                    android:text="Lost: "
                     android:textSize="16sp"
                     android:layout_marginStart="5dp"/>
 
@@ -55,7 +55,28 @@
                     android:id="@+id/totalLostAmount"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="1"
+                    android:text="TBD"
+                    android:textSize="16sp"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/totalDraws"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Draws: "
+                    android:textSize="16sp"
+                    android:layout_marginStart="5dp"/>
+
+                <TextView
+                    android:id="@+id/totalDrawsAmount"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="TBD"
                     android:textSize="16sp"/>
             </LinearLayout>
         </LinearLayout>
