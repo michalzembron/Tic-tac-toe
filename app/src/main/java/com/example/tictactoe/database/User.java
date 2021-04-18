@@ -1,53 +1,64 @@
 package com.example.tictactoe.database;
 
+import android.util.Log;
+import android.widget.TextView;
+
+import androidx.annotation.NonNull;
+
+import com.example.tictactoe.GetContext;
+import com.example.tictactoe.installation.Installation;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
 public class User {
 
-    private String name, pushId;
-    public int wins;
-    public int losts;
-    public int draws;
+    DatabaseReference database = FirebaseDatabase.getInstance().getReference();
+    GetContext getContext = new GetContext();
 
-    public void setWins(int wins){
-        this.wins = wins;
+    public void getValueFromDatabase(String name, TextView textView){
+        database.child("Users").child(Installation.id(getContext)).child(name).get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<DataSnapshot> task) {
+                if (!task.isSuccessful()) {
+                    Log.e("firebase", "Error getting data", task.getException());
+                }
+                else {
+                    Log.d("firebase", String.valueOf(task.getResult().getValue()));
+                    if(String.valueOf(task.getResult().getValue()).equals("null")){
+                        setValueInDatabase(name, 0);
+                    }
+                    if (!String.valueOf(task.getResult().getValue()).equals("null")){
+                        textView.setText(String.valueOf(task.getResult().getValue()));
+                    }
+                }
+            }
+        });
     }
 
-    public void setLosts(int losts){
-        this.losts = losts;
+    public void setValueInDatabase(String name, int value){
+        database.child("Users").child(Installation.id(getContext)).child(name).setValue(value);
     }
 
-    public void setDraws(int draws){
-        this.draws = draws;
-    }
-
-    public int getWins(){
-        return wins;
-    }
-
-    public int getLosts() {
-        return losts;
-    }
-
-    public int getDraws() {
-        return draws;
-    }
-
-    public User(String name) {
-        this.name = name;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getPushId() {
-        return pushId;
-    }
-
-    public void setPushId(String pushId) {
-        this.pushId = pushId;
+    public void changeValueInDatabase(String name){
+        database.child("Users").child(Installation.id(getContext)).child(name).get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<DataSnapshot> task) {
+                if (!task.isSuccessful()) {
+                    Log.e("firebase", "Error getting data", task.getException());
+                }
+                else {
+                    Log.d("firebase", String.valueOf(task.getResult().getValue()));
+                    if(String.valueOf(task.getResult().getValue()).equals("null")){
+                        setValueInDatabase(name, 0);
+                    }
+                    if (!String.valueOf(task.getResult().getValue()).equals("null")){
+                        database.child("Users").child(Installation.id(getContext)).child(name).setValue((Integer.parseInt(String.valueOf(task.getResult().getValue())) + 1));
+                    }
+                }
+            }
+        });
     }
 }

@@ -9,5 +9,19 @@
     <string name="skin">Skórki</string>
     <string name="p1Winning">Player One is Winning !</string>
     <string name="p2Winning">Player Two is Winning !</string>
+
+    <!--activity_skins_current-->
+    <string name="current_skin_X_Text">Current X skin, tap to change it !</string>
+    <string name="current_skin_O_Text">Current O skin, tap to change it !</string>
+
+    <!--activity_skins_changer_x-->
+    <string name="skin_x_0_description">Default X appearance</string>
+    <string name="skin_x_1_description">Test X 1</string>
+    <string name="skin_x_2_description">Test X 2</string>
+
+    <!--activity_skins_changer_o-->
+    <string name="skin_o_0_description">Default O appearance</string>
+    <string name="skin_o_1_description">Test O 1</string>
+    <string name="skin_o_2_description">Test O 2</string>
     <string name="join_lobby">Join Lobby</string>
 </resources>

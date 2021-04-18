@@ -4,19 +4,19 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.tictactoe.database.Connection;
-import com.example.tictactoe.installation.Installation;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
+import com.example.tictactoe.currency.Currency;
+import com.example.tictactoe.database.User;
+import com.example.tictactoe.skins.Skins;
 
 public class PlaySingleplayerActivity extends AppCompatActivity implements View.OnClickListener{
+    Currency currency = new Currency();
+    User user = new User();
 
     private TextView playerOneScore, playerTwoScore, playerStatus;
     private final ImageButton [] buttons = new ImageButton[9];
@@ -38,6 +38,8 @@ public class PlaySingleplayerActivity extends AppCompatActivity implements View.
             {0,4,8}, {2,4,6} //na krzyz
     };
 
+    Skins skins = new Skins();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -57,12 +59,11 @@ public class PlaySingleplayerActivity extends AppCompatActivity implements View.
         int gameStatePointer = Integer.parseInt(buttonID.substring(buttonID.length()-1));
 
         if (activePlayer){
-            //TODO: zrobic rozne ikonki albo standaryzacje
-            ((ImageButton) v).setImageResource(R.drawable.ic_person_black_24dp);
+            ((ImageButton) v).setImageResource(getResources().getIdentifier(skins.getCurrentXSkin(), "drawable", getPackageName()));
             v.setTag("1");
             gameState[gameStatePointer] = 1;
         } else {
-            ((ImageButton) v).setImageResource(R.drawable.ic_people_alt_black_24dp);
+            ((ImageButton) v).setImageResource(getResources().getIdentifier(skins.getCurrentOSkin(), "drawable", getPackageName()));
             v.setTag("2");
             gameState[gameStatePointer] = 2;
         }
@@ -73,15 +74,20 @@ public class PlaySingleplayerActivity extends AppCompatActivity implements View.
                 playerOneScoreCount++;
                 UpdatePlayerScore();
                 Toast.makeText(this, "Player One Won!", Toast.LENGTH_SHORT).show();
+                currency.setCurrency(currency.getCurrency() + 10);
+                Toast.makeText(this, "Player One received +10 currency !", Toast.LENGTH_SHORT).show();
+                user.changeValueInDatabase("Wins");
             } else {
                 playerTwoScoreCount++;
                 UpdatePlayerScore();
                 Toast.makeText(this, "Player Two Won!", Toast.LENGTH_SHORT).show();
+                user.changeValueInDatabase("Losts");
             }
             PlayAgain();
         } else if (roundCount == 9) {
             PlayAgain();
             Toast.makeText(this, "No Winner!", Toast.LENGTH_SHORT).show();
+            user.changeValueInDatabase("Draws");
         } else {
             activePlayer = !activePlayer;
         }

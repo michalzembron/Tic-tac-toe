@@ -28,7 +28,7 @@ public class Installation {
         return sID;
     }
 
-    private static String readInstallationFile(File installation) throws IOException, IOException {
+    private static String readInstallationFile(File installation) throws IOException {
         RandomAccessFile f = new RandomAccessFile(installation, "r");
         byte[] bytes = new byte[(int) f.length()];
         f.readFully(bytes);
