@@ -17,7 +17,6 @@
         <activity android:name=".skins.SkinsCurrentActivity" />
         <activity android:name=".skins.SkinsChangerXActivity" />
         <activity android:name=".BoardMultiplayerActivity"></activity>
-        <activity android:name=".MultiplayerBoardActivity" />
         <activity android:name=".PlayMultiplayerActivity" />
         <activity android:name=".PlaySingleplayerActivity" />
         <activity android:name=".SettingsActivity" />

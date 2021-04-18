@@ -11,7 +11,9 @@ import android.view.View;
 import android.widget.ImageButton;
 import android.widget.Toast;
 
+import com.example.tictactoe.currency.Currency;
 import com.example.tictactoe.installation.Installation;
+import com.example.tictactoe.skins.Skins;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -28,11 +30,9 @@ public class BoardMultiplayerActivity extends AppCompatActivity implements View.
     boolean isThisPlayerOne;
     boolean isActivePlayer;
 
-    int [][] winningPositions = {
-            {0,1,2}, {3,4,5}, {6,7,8}, //wiersze
-            {0,3,6}, {1,4,7}, {2,5,8}, //kolumny
-            {0,4,8}, {2,4,6} //na krzyz
-    };
+    Skins skins = new Skins();
+    Currency currency = new Currency();
+
     String  gameState = "000000000";
 
 
@@ -68,12 +68,12 @@ public class BoardMultiplayerActivity extends AppCompatActivity implements View.
         int gameStatePointer = Integer.parseInt(buttonID.substring(buttonID.length()-1));
         boolean hasBoardChanged=false;
         if (isThisPlayerOne && isActivePlayer) {
-            ((ImageButton) v).setImageResource(R.drawable.ic_person_black_24dp);
+            ((ImageButton) v).setImageResource(getResources().getIdentifier(skins.getCurrentXSkin(), "drawable", getPackageName()));
             v.setTag("1");
             gameState = changeCharInPosition(gameStatePointer,'1',gameState);
             hasBoardChanged=true;
         } else if (!isThisPlayerOne && isActivePlayer) {
-            ((ImageButton) v).setImageResource(R.drawable.ic_people_alt_black_24dp);
+            ((ImageButton) v).setImageResource(getResources().getIdentifier(skins.getCurrentOSkin(), "drawable", getPackageName()));
             v.setTag("2");
             gameState = changeCharInPosition(gameStatePointer,'2',gameState);
             hasBoardChanged=true;
@@ -84,20 +84,24 @@ public class BoardMultiplayerActivity extends AppCompatActivity implements View.
             gamesRef.child("gameboard").setValue(gameState);
         }
 
-//        if (CheckWinner())
-//        {
-//            if (buttons[winningPos].getTag()=="1") {
-//                Toast.makeText(this, "Player One Won!", Toast.LENGTH_SHORT).show();
-//            } else {
-//                Toast.makeText(this, "Player Two Won!", Toast.LENGTH_SHORT).show();
-//            }
-//        } else if (roundCount == 9) {
-//            PlayAgain();
-//            Toast.makeText(this, "No Winner!", Toast.LENGTH_SHORT).show();
-//        } else
-//       {
-//       }
-//
+        if (CheckWinner())
+        {
+            if (buttons[winningPos].getTag()=="1") {
+                if(isThisPlayerOne) currency.setCurrency(currency.getCurrency() + 10);
+                Toast.makeText(this, "Player One Won!", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "You received +10 currency !", Toast.LENGTH_SHORT).show();
+                PlayAgain();
+            } else {
+                if(!isThisPlayerOne) currency.setCurrency(currency.getCurrency() + 10);
+                Toast.makeText(this, "Player Two Won!", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "You received +10 currency !", Toast.LENGTH_SHORT).show();
+                PlayAgain();
+            }
+        } else if (roundCount == 9) {
+            PlayAgain();
+            Toast.makeText(this, "No Winner!", Toast.LENGTH_SHORT).show();
+        }
+
     }
 
     @Override
@@ -122,7 +126,12 @@ public class BoardMultiplayerActivity extends AppCompatActivity implements View.
                 if (snapshot.child(gameCode).child("player1").getValue() != null) {
                     if (snapshot.child(gameCode).child("player1").getValue().toString().toLowerCase().equals(id.toLowerCase())) {
                         gamesRef.child(gameCode).child("player1").removeValue();
-                    } else gamesRef.child(gameCode).child("player2").removeValue();
+                    }
+                }
+                if (snapshot.child(gameCode).child("player2").getValue() != null) {
+                    if (snapshot.child(gameCode).child("player2").getValue().toString().toLowerCase().equals(id.toLowerCase())) {
+                        gamesRef.child(gameCode).child("player2").removeValue();
+                    }
                 }
             }
 
@@ -141,10 +150,13 @@ public class BoardMultiplayerActivity extends AppCompatActivity implements View.
         for (int i = 0; i < 9; i++) {
             if (gameState.charAt(i) == 0) {
                 buttons[i].setImageResource(0);
+                buttons[i].setTag("0");
             } else if (gameState.charAt(i) == '1') {
-                buttons[i].setImageResource(R.drawable.ic_person_black_24dp);
+                buttons[i].setImageResource(getResources().getIdentifier(skins.getCurrentXSkin(), "drawable", getPackageName()));
+                buttons[i].setTag("1");
             } else if (gameState.charAt(i) == '2') {
-                buttons[i].setImageResource(R.drawable.ic_people_alt_black_24dp);
+                buttons[i].setImageResource(getResources().getIdentifier(skins.getCurrentOSkin(), "drawable", getPackageName()));
+                buttons[i].setTag("2");
             }
         }
     }
@@ -166,19 +178,101 @@ public class BoardMultiplayerActivity extends AppCompatActivity implements View.
     }
 
     public boolean CheckWinner(){
-        boolean winnerResult = false;
-
-        for(int [] winningPosition : winningPositions){
-            if (gameState.charAt(winningPosition[0]) == gameState.charAt(winningPosition[1]) &&
-                    gameState.charAt(winningPosition[1]) == gameState.charAt(winningPosition[2]) &&
-                    gameState.charAt(winningPosition[0]) != 0) {
-                winnerResult = true;
-                winningPos = gameState.charAt(winningPosition[0]);
-                break;
+        // pierwszy rzad
+        if(gameState.charAt(0)==gameState.charAt(1))
+        {
+            if(gameState.charAt(1)==gameState.charAt(2))
+            {
+                if(gameState.charAt(0)!='0') {
+                    winningPos=0;
+                    return true;
+                }
             }
         }
+        //drugi rzad
+        if(gameState.charAt(3)==gameState.charAt(4))
+        {
 
-        return winnerResult;
+            if(gameState.charAt(4)==gameState.charAt(5))
+            {
+                if(gameState.charAt(3)!='0') {
+                    winningPos=3;
+                    return true;
+                }
+            }
+        }
+        // trzeci rzad
+        if(gameState.charAt(6)==gameState.charAt(7))
+        {
+            if(gameState.charAt(7)==gameState.charAt(8))
+            {
+                if(gameState.charAt(6)!='0') {
+                    winningPos=6;
+                    return true;
+                }
+            }
+        }
+        // pierwsza kolumna
+        if(gameState.charAt(0)==gameState.charAt(3))
+        {
+            if(gameState.charAt(3)==gameState.charAt(6))
+            {
+                if(gameState.charAt(0)!='0')
+                {
+                    winningPos=0;
+                    return true;
+                }
+            }
+        }
+        // druga kolumna
+        if(gameState.charAt(1)==gameState.charAt(4))
+        {
+            if(gameState.charAt(4)==gameState.charAt(7))
+            {
+                if(gameState.charAt(1)!='0')
+                {
+                    winningPos=1;
+                    return true;
+                }
+            }
+        }
+        // trzecia kolumna
+        if(gameState.charAt(2)==gameState.charAt(5))
+        {
+            if(gameState.charAt(5)==gameState.charAt(8))
+            {
+                if(gameState.charAt(2)!='0')
+                {
+                    winningPos=2;
+                    return true;
+                }
+            }
+        }
+        // lewy gorny
+        if(gameState.charAt(0)==gameState.charAt(4))
+        {
+            if(gameState.charAt(4)==gameState.charAt(8))
+            {
+                if(gameState.charAt(0)!='0')
+                {
+                    winningPos=0;
+                    return true;
+                }
+            }
+        }
+        //lewy dolny
+        if(gameState.charAt(2)==gameState.charAt(4))
+        {
+            if(gameState.charAt(4)==gameState.charAt(6))
+            {
+                if(gameState.charAt(2)!='0')
+                {
+                    winningPos=2;
+                    return true;
+                }
+            }
+        }
+        return false;
     }
 
     public void PlayAgain(){
