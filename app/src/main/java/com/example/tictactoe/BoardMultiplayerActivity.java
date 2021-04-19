@@ -12,6 +12,7 @@ import android.widget.ImageButton;
 import android.widget.Toast;
 
 import com.example.tictactoe.currency.Currency;
+import com.example.tictactoe.database.User;
 import com.example.tictactoe.installation.Installation;
 import com.example.tictactoe.skins.Skins;
 import com.google.firebase.database.DataSnapshot;
@@ -32,6 +33,7 @@ public class BoardMultiplayerActivity extends AppCompatActivity implements View.
 
     Skins skins = new Skins();
     Currency currency = new Currency();
+    User user = new User();
 
     String  gameState = "000000000";
 
@@ -87,12 +89,17 @@ public class BoardMultiplayerActivity extends AppCompatActivity implements View.
         if (CheckWinner())
         {
             if (buttons[winningPos].getTag()=="1") {
-                if(isThisPlayerOne) currency.setCurrency(currency.getCurrency() + 10);
+                if(isThisPlayerOne) {
+                    currency.setCurrency(currency.getCurrency() + 10);
+                    user.changeValueInDatabase("Wins");
+                }
                 Toast.makeText(this, "Player One Won!", Toast.LENGTH_SHORT).show();
                 Toast.makeText(this, "You received +10 currency !", Toast.LENGTH_SHORT).show();
                 PlayAgain();
             } else {
-                if(!isThisPlayerOne) currency.setCurrency(currency.getCurrency() + 10);
+                if(!isThisPlayerOne) {
+                    currency.setCurrency(currency.getCurrency() + 10);
+                }
                 Toast.makeText(this, "Player Two Won!", Toast.LENGTH_SHORT).show();
                 Toast.makeText(this, "You received +10 currency !", Toast.LENGTH_SHORT).show();
                 PlayAgain();
