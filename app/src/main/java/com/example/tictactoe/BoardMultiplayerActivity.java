@@ -86,9 +86,9 @@ public class BoardMultiplayerActivity extends AppCompatActivity implements View.
             gamesRef.child("gameboard").setValue(gameState);
         }
 
+        roundCount++;
         if (CheckWinner())
         {
-            roundCount++;
             if (buttons[winningPos].getTag()=="1") {
                 if(isThisPlayerOne) {
                     currency.setCurrency(currency.getCurrency() + 10);
