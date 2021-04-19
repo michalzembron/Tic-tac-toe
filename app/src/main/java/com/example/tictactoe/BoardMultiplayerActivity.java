@@ -92,6 +92,8 @@ public class BoardMultiplayerActivity extends AppCompatActivity implements View.
                 if(isThisPlayerOne) {
                     currency.setCurrency(currency.getCurrency() + 10);
                     user.changeValueInDatabase("Wins");
+                } else if (!isThisPlayerOne) {
+                    user.changeValueInDatabase("Losts");
                 }
                 Toast.makeText(this, "Player One Won!", Toast.LENGTH_SHORT).show();
                 Toast.makeText(this, "You received +10 currency !", Toast.LENGTH_SHORT).show();
@@ -99,6 +101,9 @@ public class BoardMultiplayerActivity extends AppCompatActivity implements View.
             } else {
                 if(!isThisPlayerOne) {
                     currency.setCurrency(currency.getCurrency() + 10);
+                    user.changeValueInDatabase("Wins");
+                } else if (isThisPlayerOne) {
+                    user.changeValueInDatabase("Losts");
                 }
                 Toast.makeText(this, "Player Two Won!", Toast.LENGTH_SHORT).show();
                 Toast.makeText(this, "You received +10 currency !", Toast.LENGTH_SHORT).show();
@@ -106,6 +111,7 @@ public class BoardMultiplayerActivity extends AppCompatActivity implements View.
             }
         } else if (roundCount == 9) {
             PlayAgain();
+            user.changeValueInDatabase("Draws");
             Toast.makeText(this, "No Winner!", Toast.LENGTH_SHORT).show();
         }
 
