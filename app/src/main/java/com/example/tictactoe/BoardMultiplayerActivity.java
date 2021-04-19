@@ -27,7 +27,6 @@ public class BoardMultiplayerActivity extends AppCompatActivity implements View.
     String id = Installation.id(this);
     private final ImageButton[] buttons = new ImageButton[9];
     private int winningPos=-1;
-    int roundCount=0;
     boolean isThisPlayerOne;
     boolean isActivePlayer;
 
@@ -86,32 +85,42 @@ public class BoardMultiplayerActivity extends AppCompatActivity implements View.
             gamesRef.child("gameboard").setValue(gameState);
         }
 
-        roundCount++;
         if (CheckWinner())
         {
+            PlayAgain();
             if (buttons[winningPos].getTag()=="1") {
+                Toast.makeText(this, "Player One Won!", Toast.LENGTH_SHORT).show();
                 if(isThisPlayerOne) {
                     currency.setCurrency(currency.getCurrency() + 10);
                     user.changeValueInDatabase("Wins");
+                    Toast.makeText(this, "You received +10 currency !", Toast.LENGTH_SHORT).show();
                 }
-                Toast.makeText(this, "Player One Won!", Toast.LENGTH_SHORT).show();
-                Toast.makeText(this, "You received +10 currency !", Toast.LENGTH_SHORT).show();
-                PlayAgain();
+                else
+                {
+                    Log.d("LOSE","PLAYER2 LOSE");
+                    user.changeValueInDatabase("Lose");
+                }
+
             } else {
+                Toast.makeText(this, "Player Two Won!", Toast.LENGTH_SHORT).show();
                 if(!isThisPlayerOne) {
                     currency.setCurrency(currency.getCurrency() + 10);
                     user.changeValueInDatabase("Wins");
+                    Toast.makeText(this, "You received +10 currency !", Toast.LENGTH_SHORT).show();
                 }
-                Toast.makeText(this, "Player Two Won!", Toast.LENGTH_SHORT).show();
-                Toast.makeText(this, "You received +10 currency !", Toast.LENGTH_SHORT).show();
-                PlayAgain();
+                else
+                {
+                    Log.d("LOSE","PLAYER1 LOSE");
+                    user.changeValueInDatabase("Lose");
+                }
+
             }
-        } else if (roundCount == 5) {
+        }
+        else if (!gameState.contains("0")) {
             user.changeValueInDatabase("Draws");
             Toast.makeText(this, "No Winner!", Toast.LENGTH_SHORT).show();
             PlayAgain();
         }
-        Log.i("ROUND: ", String.valueOf(roundCount));
     }
 
     @Override
@@ -158,7 +167,7 @@ public class BoardMultiplayerActivity extends AppCompatActivity implements View.
         gameState = newGameState;
         Log.d("gamestate",gameState);
         for (int i = 0; i < 9; i++) {
-            if (gameState.charAt(i) == 0) {
+            if (gameState.charAt(i) == '0') {
                 buttons[i].setImageResource(0);
                 buttons[i].setTag("0");
             } else if (gameState.charAt(i) == '1') {
@@ -286,25 +295,14 @@ public class BoardMultiplayerActivity extends AppCompatActivity implements View.
     }
 
     public void PlayAgain(){
-        roundCount = 0;
         for (int i = 0; i < buttons.length; i++) {
             buttons[i].setTag("0");
         }
         gameState = "000000000";
         String gameCode = getIntent().getStringExtra("gameCode");
-        DatabaseReference gamesRef = FirebaseDatabase.getInstance().getReference("Games/" + gameCode);
-        gamesRef.addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                gamesRef.child(gameCode).child("gameboard").setValue((gameState));
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-
-            }
-        });
-
+        DatabaseReference gamesRef = FirebaseDatabase.getInstance().getReference("Games/" + gameCode+"/gameboard");
+        gamesRef.setValue(gameState);
+        UpdateBoardVisuals(gameState);
     }
 
     public String changeCharInPosition(int position, char ch, String str){
