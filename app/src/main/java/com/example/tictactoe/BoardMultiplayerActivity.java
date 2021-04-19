@@ -13,7 +13,6 @@ import android.widget.Toast;
 import com.example.tictactoe.currency.Currency;
 import com.example.tictactoe.database.User;
 import com.example.tictactoe.installation.Installation;
-import com.example.tictactoe.skins.Skins;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -22,18 +21,21 @@ import com.google.firebase.database.ValueEventListener;
 
 
 public class BoardMultiplayerActivity extends AppCompatActivity implements View.OnClickListener {
+    DatabaseReference database = FirebaseDatabase.getInstance().getReference();
 
     String id = Installation.id(this);
     private final ImageButton[] buttons = new ImageButton[9];
-    private int winningPos=-1;
+    private int winningPos = -1;
     boolean isThisPlayerOne;
     boolean isActivePlayer;
 
-    Skins skins = new Skins();
     Currency currency = new Currency();
     User user = new User();
 
-    String  gameState = "000000000";
+    String player1Skin;
+    String player2Skin;
+
+    String  gameState;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,7 +43,10 @@ public class BoardMultiplayerActivity extends AppCompatActivity implements View.
         setContentView(R.layout.activity_multiplayer_board);
         AssignVariables();
         String gameCode = getIntent().getStringExtra("gameCode");
-        DatabaseReference gamesRef = FirebaseDatabase.getInstance().getReference("Games/" + gameCode+"/gameboard");
+        getPlayerSkins(gameCode, "player1Skin");
+        getPlayerSkins(gameCode, "player2Skin");
+
+        DatabaseReference gamesRef = FirebaseDatabase.getInstance().getReference("Games/" + gameCode + "/gameboard");
         gamesRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -57,6 +62,8 @@ public class BoardMultiplayerActivity extends AppCompatActivity implements View.
     @Override
     public void onClick(View v) {
         String gameCode = getIntent().getStringExtra("gameCode");
+        getPlayerSkins(gameCode, "player1Skin");
+        getPlayerSkins(gameCode, "player2Skin");
         DatabaseReference gamesRef = FirebaseDatabase.getInstance().getReference("Games/" + gameCode);
         if (v.getTag() != "0") {
             return;
@@ -65,12 +72,12 @@ public class BoardMultiplayerActivity extends AppCompatActivity implements View.
         int gameStatePointer = Integer.parseInt(buttonID.substring(buttonID.length()-1));
         boolean hasBoardChanged=false;
         if (isThisPlayerOne && isActivePlayer) {
-            ((ImageButton) v).setImageResource(getResources().getIdentifier(skins.getCurrentXSkin(), "drawable", getPackageName()));
+            ((ImageButton) v).setImageResource(getResources().getIdentifier(player1Skin, "drawable", getPackageName()));
             v.setTag("1");
             gameState = changeCharInPosition(gameStatePointer,'1',gameState);
             hasBoardChanged=true;
         } else if (!isThisPlayerOne && isActivePlayer) {
-            ((ImageButton) v).setImageResource(getResources().getIdentifier(skins.getCurrentOSkin(), "drawable", getPackageName()));
+            ((ImageButton) v).setImageResource(getResources().getIdentifier(player2Skin, "drawable", getPackageName()));
             v.setTag("2");
             gameState = changeCharInPosition(gameStatePointer,'2',gameState);
             hasBoardChanged=true;
@@ -133,11 +140,13 @@ public class BoardMultiplayerActivity extends AppCompatActivity implements View.
                 if (snapshot.child(gameCode).child("player1").getValue() != null) {
                     if (snapshot.child(gameCode).child("player1").getValue().toString().toLowerCase().equals(id.toLowerCase())) {
                         gamesRef.child(gameCode).child("player1").removeValue();
+                        gamesRef.child(gameCode).child("player1Skin").removeValue();
                     }
                 }
                 if (snapshot.child(gameCode).child("player2").getValue() != null) {
                     if (snapshot.child(gameCode).child("player2").getValue().toString().toLowerCase().equals(id.toLowerCase())) {
                         gamesRef.child(gameCode).child("player2").removeValue();
+                        gamesRef.child(gameCode).child("player2Skin").removeValue();
                     }
                 }
             }
@@ -155,10 +164,10 @@ public class BoardMultiplayerActivity extends AppCompatActivity implements View.
                 buttons[i].setImageResource(0);
                 buttons[i].setTag("0");
             } else if (gameState.charAt(i) == '1') {
-                buttons[i].setImageResource(getResources().getIdentifier(skins.getCurrentXSkin(), "drawable", getPackageName()));
+                buttons[i].setImageResource(getResources().getIdentifier(player1Skin, "drawable", getPackageName()));
                 buttons[i].setTag("1");
             } else if (gameState.charAt(i) == '2') {
-                buttons[i].setImageResource(getResources().getIdentifier(skins.getCurrentOSkin(), "drawable", getPackageName()));
+                buttons[i].setImageResource(getResources().getIdentifier(player2Skin, "drawable", getPackageName()));
                 buttons[i].setTag("2");
             }
         }
@@ -293,5 +302,19 @@ public class BoardMultiplayerActivity extends AppCompatActivity implements View.
         char[] charArray = str.toCharArray();
         charArray[position] = ch;
         return new String(charArray);
+    }
+
+    public void getPlayerSkins(String gameCode, String player){
+        database.child("Games").child(gameCode).child(player).get().addOnCompleteListener(task -> {
+            if (!task.isSuccessful()) {
+                Log.e("firebase", "Error getting data", task.getException());
+            }
+            else {
+                if (!String.valueOf(task.getResult().getValue()).equals("null")){
+                    if (player.equals("player1Skin")) player1Skin = (String.valueOf(task.getResult().getValue()));
+                    else if (player.equals("player2Skin")) player2Skin = (String.valueOf(task.getResult().getValue()));
+                }
+            }
+        });
     }
 }
