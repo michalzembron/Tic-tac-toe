@@ -23,4 +23,5 @@
     <string name="skin_o_0_description">Default O appearance</string>
     <string name="skin_o_1_description">Test O 1</string>
     <string name="skin_o_2_description">Test O 2</string>
+    <string name="join_lobby">Join Lobby</string>
 </resources>

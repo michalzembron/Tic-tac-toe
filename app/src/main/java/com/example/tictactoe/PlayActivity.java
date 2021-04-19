@@ -6,6 +6,9 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.widget.ImageButton;
 
+import com.google.android.gms.common.ConnectionResult;
+import com.google.android.gms.common.GoogleApiAvailability;
+
 public class PlayActivity extends AppCompatActivity {
 
     @Override
@@ -17,5 +20,28 @@ public class PlayActivity extends AppCompatActivity {
         buttonSingleplayer.setOnClickListener(view -> {
             Intent intent = new Intent(view.getContext(), PlaySingleplayerActivity.class);
             view.getContext().startActivity(intent);});
+
+        ImageButton buttonMultiplayer = findViewById(R.id.Button_Multiplayer);
+        buttonMultiplayer.setOnClickListener(view -> {
+            if(arePlayServicesOk())
+            {
+                Intent intent = new Intent(view.getContext(), PlayMultiplayerActivity.class);
+                view.getContext().startActivity(intent);
+            } });
+
+    }
+
+    private boolean arePlayServicesOk(){
+        final GoogleApiAvailability googleAPI = GoogleApiAvailability.getInstance();
+        final int resultCode = googleAPI.isGooglePlayServicesAvailable(this);
+
+        if (resultCode != ConnectionResult.SUCCESS) {
+            if (googleAPI.isUserResolvableError(resultCode)) {
+                googleAPI.getErrorDialog(this, resultCode, 5000).show();
+            }
+            return false;
+        }
+
+        return true;
     }
 }

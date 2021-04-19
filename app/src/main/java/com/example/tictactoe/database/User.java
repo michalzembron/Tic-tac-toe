@@ -19,20 +19,17 @@ public class User {
     GetContext getContext = new GetContext();
 
     public void getValueFromDatabase(String name, TextView textView){
-        database.child("Users").child(Installation.id(getContext)).child(name).get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
-            @Override
-            public void onComplete(@NonNull Task<DataSnapshot> task) {
-                if (!task.isSuccessful()) {
-                    Log.e("firebase", "Error getting data", task.getException());
+        database.child("Users").child(Installation.id(getContext)).child(name).get().addOnCompleteListener(task -> {
+            if (!task.isSuccessful()) {
+                Log.e("firebase", "Error getting data", task.getException());
+            }
+            else {
+                Log.d("firebase", String.valueOf(task.getResult().getValue()));
+                if(String.valueOf(task.getResult().getValue()).equals("null")){
+                    setValueInDatabase(name, 0);
                 }
-                else {
-                    Log.d("firebase", String.valueOf(task.getResult().getValue()));
-                    if(String.valueOf(task.getResult().getValue()).equals("null")){
-                        setValueInDatabase(name, 0);
-                    }
-                    if (!String.valueOf(task.getResult().getValue()).equals("null")){
-                        textView.setText(String.valueOf(task.getResult().getValue()));
-                    }
+                if (!String.valueOf(task.getResult().getValue()).equals("null")){
+                    textView.setText(String.valueOf(task.getResult().getValue()));
                 }
             }
         });
@@ -43,20 +40,46 @@ public class User {
     }
 
     public void changeValueInDatabase(String name){
-        database.child("Users").child(Installation.id(getContext)).child(name).get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
-            @Override
-            public void onComplete(@NonNull Task<DataSnapshot> task) {
-                if (!task.isSuccessful()) {
-                    Log.e("firebase", "Error getting data", task.getException());
+        database.child("Users").child(Installation.id(getContext)).child(name).get().addOnCompleteListener(task -> {
+            if (!task.isSuccessful()) {
+                Log.e("firebase", "Error getting data", task.getException());
+            }
+            else {
+                Log.d("firebase", String.valueOf(task.getResult().getValue()));
+                if(String.valueOf(task.getResult().getValue()).equals("null")){
+                    setValueInDatabase(name, 1);
                 }
-                else {
-                    Log.d("firebase", String.valueOf(task.getResult().getValue()));
-                    if(String.valueOf(task.getResult().getValue()).equals("null")){
-                        setValueInDatabase(name, 1);
-                    }
-                    if (!String.valueOf(task.getResult().getValue()).equals("null")){
-                        database.child("Users").child(Installation.id(getContext)).child(name).setValue((Integer.parseInt(String.valueOf(task.getResult().getValue())) + 1));
-                    }
+                if (!String.valueOf(task.getResult().getValue()).equals("null")){
+                    database.child("Users").child(Installation.id(getContext)).child(name).setValue((Integer.parseInt(String.valueOf(task.getResult().getValue())) + 1));
+                }
+            }
+        });
+    }
+
+    public void getPlayerID(String gameCode, String player, String state){
+        database.child("Games").child(gameCode).child(player).get().addOnCompleteListener(task -> {
+            if (!task.isSuccessful()) {
+                Log.e("firebase", "Error getting data", task.getException());
+            }
+            else {
+                if (!String.valueOf(task.getResult().getValue()).equals("null")){
+                    changeValueInDatabaseMultiplayer(String.valueOf(task.getResult().getValue()), state);
+                }
+            }
+        });
+    }
+
+    public void changeValueInDatabaseMultiplayer(String playerID, String name){
+        database.child("Users").child(playerID).child(name).get().addOnCompleteListener(task -> {
+            if (!task.isSuccessful()) {
+                Log.e("firebase", "Error getting data", task.getException());
+            }
+            else {
+                if(String.valueOf(task.getResult().getValue()).equals("null")){
+                    setValueInDatabase(name, 1);
+                }
+                if (!String.valueOf(task.getResult().getValue()).equals("null")){
+                    database.child("Users").child(playerID).child(name).setValue((Integer.parseInt(String.valueOf(task.getResult().getValue()))) + 1);
                 }
             }
         });
