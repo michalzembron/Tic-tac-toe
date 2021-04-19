@@ -92,7 +92,8 @@ public class BoardMultiplayerActivity extends AppCompatActivity implements View.
                 if(isThisPlayerOne) {
                     currency.setCurrency(currency.getCurrency() + 10);
                     user.changeValueInDatabase("Wins");
-                } else if (!isThisPlayerOne) {
+                }
+                if (!isThisPlayerOne) {
                     user.changeValueInDatabase("Losts");
                 }
                 Toast.makeText(this, "Player One Won!", Toast.LENGTH_SHORT).show();
@@ -102,7 +103,8 @@ public class BoardMultiplayerActivity extends AppCompatActivity implements View.
                 if(!isThisPlayerOne) {
                     currency.setCurrency(currency.getCurrency() + 10);
                     user.changeValueInDatabase("Wins");
-                } else if (isThisPlayerOne) {
+                }
+                if (isThisPlayerOne) {
                     user.changeValueInDatabase("Losts");
                 }
                 Toast.makeText(this, "Player Two Won!", Toast.LENGTH_SHORT).show();
