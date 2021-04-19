@@ -93,9 +93,6 @@ public class BoardMultiplayerActivity extends AppCompatActivity implements View.
                     currency.setCurrency(currency.getCurrency() + 10);
                     user.changeValueInDatabase("Wins");
                 }
-                if (isActivePlayer) {
-                    user.changeValueInDatabase("Losts");
-                }
                 Toast.makeText(this, "Player One Won!", Toast.LENGTH_SHORT).show();
                 Toast.makeText(this, "You received +10 currency !", Toast.LENGTH_SHORT).show();
                 PlayAgain();
@@ -104,7 +101,6 @@ public class BoardMultiplayerActivity extends AppCompatActivity implements View.
                     currency.setCurrency(currency.getCurrency() + 10);
                     user.changeValueInDatabase("Wins");
                 }
-                user.changeValueInDatabase("Losts");
                 Toast.makeText(this, "Player Two Won!", Toast.LENGTH_SHORT).show();
                 Toast.makeText(this, "You received +10 currency !", Toast.LENGTH_SHORT).show();
                 PlayAgain();
@@ -114,7 +110,7 @@ public class BoardMultiplayerActivity extends AppCompatActivity implements View.
             Toast.makeText(this, "No Winner!", Toast.LENGTH_SHORT).show();
             PlayAgain();
         }
-
+        Log.i("ROUND: ", String.valueOf(roundCount));
     }
 
     @Override
