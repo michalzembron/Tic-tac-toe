@@ -52,7 +52,7 @@ public class User {
                 else {
                     Log.d("firebase", String.valueOf(task.getResult().getValue()));
                     if(String.valueOf(task.getResult().getValue()).equals("null")){
-                        setValueInDatabase(name, 0);
+                        setValueInDatabase(name, 1);
                     }
                     if (!String.valueOf(task.getResult().getValue()).equals("null")){
                         database.child("Users").child(Installation.id(getContext)).child(name).setValue((Integer.parseInt(String.valueOf(task.getResult().getValue())) + 1));
