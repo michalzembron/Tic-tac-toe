@@ -106,7 +106,7 @@ public class BoardMultiplayerActivity extends AppCompatActivity implements View.
                 Toast.makeText(this, "You received +10 currency !", Toast.LENGTH_SHORT).show();
                 PlayAgain();
             }
-        } else if (roundCount == 9) {
+        } else if (roundCount == 5) {
             user.changeValueInDatabase("Draws");
             Toast.makeText(this, "No Winner!", Toast.LENGTH_SHORT).show();
             PlayAgain();
