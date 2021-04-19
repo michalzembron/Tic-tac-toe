@@ -5,7 +5,6 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Debug;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageButton;
@@ -36,7 +35,6 @@ public class BoardMultiplayerActivity extends AppCompatActivity implements View.
 
     String  gameState = "000000000";
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -50,10 +48,8 @@ public class BoardMultiplayerActivity extends AppCompatActivity implements View.
                 UpdateBoardVisuals(snapshot.getValue().toString());
                 isActivePlayer=!isActivePlayer;
             }
-
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
-
             }
         });
     }
@@ -87,37 +83,29 @@ public class BoardMultiplayerActivity extends AppCompatActivity implements View.
 
         if (CheckWinner())
         {
-            PlayAgain();
             if (buttons[winningPos].getTag()=="1") {
                 Toast.makeText(this, "Player One Won!", Toast.LENGTH_SHORT).show();
                 if(isThisPlayerOne) {
                     currency.setCurrency(currency.getCurrency() + 10);
-                    user.changeValueInDatabase("Wins");
                     Toast.makeText(this, "You received +10 currency !", Toast.LENGTH_SHORT).show();
+                    user.getPlayerID(gameCode, "player1", "Wins");
+                    user.getPlayerID(gameCode, "player2", "Losts");
                 }
-                else
-                {
-                    Log.d("LOSE","PLAYER2 LOSE");
-                    user.changeValueInDatabase("Lose");
-                }
-
+                PlayAgain();
             } else {
                 Toast.makeText(this, "Player Two Won!", Toast.LENGTH_SHORT).show();
                 if(!isThisPlayerOne) {
                     currency.setCurrency(currency.getCurrency() + 10);
-                    user.changeValueInDatabase("Wins");
                     Toast.makeText(this, "You received +10 currency !", Toast.LENGTH_SHORT).show();
+                    user.getPlayerID(gameCode, "player1", "Losts");
+                    user.getPlayerID(gameCode, "player2", "Wins");
                 }
-                else
-                {
-                    Log.d("LOSE","PLAYER1 LOSE");
-                    user.changeValueInDatabase("Lose");
-                }
-
+                PlayAgain();
             }
         }
         else if (!gameState.contains("0")) {
-            user.changeValueInDatabase("Draws");
+            user.getPlayerID(gameCode, "player1", "Draws");
+            user.getPlayerID(gameCode, "player2", "Draws");
             Toast.makeText(this, "No Winner!", Toast.LENGTH_SHORT).show();
             PlayAgain();
         }
@@ -153,13 +141,9 @@ public class BoardMultiplayerActivity extends AppCompatActivity implements View.
                     }
                 }
             }
-
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
-
             }
-
-
         });
     }
 
