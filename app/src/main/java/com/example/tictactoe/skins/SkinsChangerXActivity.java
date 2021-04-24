@@ -14,9 +14,11 @@ import com.example.tictactoe.SettingsActivity;
 public class SkinsChangerXActivity extends AppCompatActivity {
     Skins skins = new Skins();
 
-    TextView textView_Skin_x_0;
-    TextView textView_Skin_x_1;
-    TextView textView_Skin_x_2;
+    private final TextView[] textViews = new TextView[9];
+
+    // Grey  = #A6858585
+    // Green = #A643CD49
+    // Red   = #A6B80000
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,44 +27,41 @@ public class SkinsChangerXActivity extends AppCompatActivity {
 
         skins.getCurrentXSkin();
 
-        // Grey  = #A6858585
-        // Green = #A643CD49
-        // Red   = #A6B80000
+        assignTextViews();
 
-        textView_Skin_x_0 = findViewById(R.id.skin_x_0);
-        textView_Skin_x_1 = findViewById(R.id.skin_x_1);
-        textView_Skin_x_2 = findViewById(R.id.skin_x_2);
-
-        setBackgroundColor();
-
-        textView_Skin_x_0.setOnClickListener(view -> {
-            //Intent intent = new Intent(view.getContext(), SkinsCurrentActivity.class);
-            //view.getContext().startActivity(intent);
-            skins.setCurrentXSkin("ic_skins_x_0");
-            textView_Skin_x_0.setBackgroundColor(Color.parseColor("#A643CD49"));
-            textView_Skin_x_1.setBackgroundColor(Color.parseColor("#A6858585"));
-        });
-
-        textView_Skin_x_1.setOnClickListener(view -> {
-            skins.setCurrentXSkin("ic_skins_1");
-            textView_Skin_x_0.setBackgroundColor(Color.parseColor("#A6858585"));
-            textView_Skin_x_1.setBackgroundColor(Color.parseColor("#A643CD49"));
-            //textView_Skin_x_2.setBackgroundColor(Color.parseColor("#A643CD49"));
-
-            //Firebase ustaw obecnie używany skin
-        });
-
-        textView_Skin_x_2.setOnClickListener(view -> {
-            Log.i("SkinsChangerXActivity","ic_skins_2 clicked !");
-        });
+        setCurrentSkin();
     }
 
-    private void setBackgroundColor(){
-        if(skins.getCurrentXSkin().equals("ic_skins_x_0")){
-            textView_Skin_x_0.setBackgroundColor(Color.parseColor("#A643CD49"));
-        } else if (skins.getCurrentXSkin().equals("ic_skins_1")){
-            textView_Skin_x_1.setBackgroundColor(Color.parseColor("#A643CD49"));
+    private void assignTextViews() {
+        for (int i = 0; i < textViews.length; i++) {
+            String textViewID = "skin_x_" + i;
+            int resourceID = getResources().getIdentifier(textViewID, "id", getPackageName());
+            Log.i("textViews", String.valueOf(resourceID));
+            textViews[i] = findViewById(resourceID);
+            int temp = i;
+            textViews[i].setOnClickListener(view -> {
+                Log.i("SkinsChangerOActivity","skin_x_" + temp +" clicked !");
+                setButtonBackgroundColor(textViews[temp]);
+                skins.setCurrentXSkin("ic_skins_" + temp);
+            });
         }
+    }
+
+    private void setOtherButtonsGrey() {
+        for (TextView textView : textViews) {
+            textView.setBackgroundColor(Color.parseColor("#A6858585"));
+        }
+    }
+
+    private void setCurrentSkin(){
+        setOtherButtonsGrey();
+        int currentSkin = Integer.parseInt(skins.getCurrentXSkin().substring(skins.getCurrentXSkin().length() - 1));
+        textViews[currentSkin].setBackgroundColor(Color.parseColor("#A643CD49"));
+    }
+
+    private void setButtonBackgroundColor(TextView textView){
+        setOtherButtonsGrey();
+        textView.setBackgroundColor(Color.parseColor("#A643CD49"));
     }
 
     @Override

@@ -1,12 +1,15 @@
 <resources>
+    <!--activity_main-->
     <string name="app_name">TicTacToe</string>
-    <string name="play">Zagraj</string>
-    <string name="statistics">Statystyki</string>
-    <string name="shop">Sklep</string>
-    <string name="settings">Ustawienia</string>
-    <string name="exit">Wyjdź</string>
-    <string name="theme">Motywy</string>
-    <string name="skin">Skórki</string>
+    <string name="play">Play</string>
+    <string name="statistics">Statistics</string>
+    <string name="shop">Shop</string>
+    <string name="settings">Settings</string>
+    <string name="exit">Exit</string>
+    <string name="theme">Themes</string>
+    <string name="skin">Skins</string>
+
+    <!--activity_play_singleplayer-->
     <string name="p1Winning">Player One is Winning !</string>
     <string name="p2Winning">Player Two is Winning !</string>
 
@@ -16,12 +19,26 @@
 
     <!--activity_skins_changer_x-->
     <string name="skin_x_0_description">Default X appearance</string>
-    <string name="skin_x_1_description">Test X 1</string>
-    <string name="skin_x_2_description">Test X 2</string>
+    <string name="skin_x_1_description">Dog</string>
+    <string name="skin_x_2_description">Cat</string>
+    <string name="skin_x_3_description">Carrot</string>
+    <string name="skin_x_4_description">Helicopter</string>
+    <string name="skin_x_5_description">Nurse</string>
+    <string name="skin_x_6_description">Police Officer</string>
+    <string name="skin_x_7_description">Rainbow</string>
+    <string name="skin_x_8_description">Sun</string>
 
     <!--activity_skins_changer_o-->
     <string name="skin_o_0_description">Default O appearance</string>
-    <string name="skin_o_1_description">Test O 1</string>
-    <string name="skin_o_2_description">Test O 2</string>
+    <string name="skin_o_1_description">Dog</string>
+    <string name="skin_o_2_description">Cat</string>
+    <string name="skin_o_3_description">Carrot</string>
+    <string name="skin_o_4_description">Helicopter</string>
+    <string name="skin_o_5_description">Nurse</string>
+    <string name="skin_o_6_description">Police Officer</string>
+    <string name="skin_o_7_description">Rainbow</string>
+    <string name="skin_o_8_description">Sun</string>
+
+    <!--activity_play_multiplayer-->
     <string name="join_lobby">Join Lobby</string>
 </resources>

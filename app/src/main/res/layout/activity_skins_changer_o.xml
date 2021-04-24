@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -24,8 +25,8 @@
                 android:layout_marginStart="25dp"
                 android:layout_marginTop="25dp"
                 android:background="#A6858585"
-                android:drawableStart="@drawable/ic_skins_o_0"
-                android:text="@string/skin_o_0_description" />
+                android:text="@string/skin_o_0_description"
+                app:drawableStartCompat="@drawable/ic_skins_o_0" />
 
             <TextView
                 android:id="@+id/skin_o_1"
@@ -34,8 +35,8 @@
                 android:layout_marginStart="25dp"
                 android:layout_marginTop="25dp"
                 android:background="#A6858585"
-                android:drawableStart="@drawable/ic_skins_1"
-                android:text="@string/skin_o_1_description" />
+                android:text="@string/skin_o_1_description"
+                app:drawableStartCompat="@drawable/ic_skins_1" />
 
             <TextView
                 android:id="@+id/skin_o_2"
@@ -44,8 +45,68 @@
                 android:layout_marginStart="25dp"
                 android:layout_marginTop="25dp"
                 android:background="#A6B80000"
-                android:drawableStart="@drawable/ic_skins_2"
-                android:text="@string/skin_o_2_description" />
+                android:text="@string/skin_o_2_description"
+                app:drawableStartCompat="@drawable/ic_skins_2" />
+
+            <TextView
+                android:id="@+id/skin_o_3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="25dp"
+                android:layout_marginTop="25dp"
+                android:background="#A6B80000"
+                android:text="@string/skin_o_3_description"
+                app:drawableStartCompat="@drawable/ic_skins_3" />
+
+            <TextView
+                android:id="@+id/skin_o_4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="25dp"
+                android:layout_marginTop="25dp"
+                android:background="#A6B80000"
+                android:text="@string/skin_o_4_description"
+                app:drawableStartCompat="@drawable/ic_skins_4" />
+
+            <TextView
+                android:id="@+id/skin_o_5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="25dp"
+                android:layout_marginTop="25dp"
+                android:background="#A6B80000"
+                android:text="@string/skin_o_5_description"
+                app:drawableStartCompat="@drawable/ic_skins_5" />
+
+            <TextView
+                android:id="@+id/skin_o_6"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="25dp"
+                android:layout_marginTop="25dp"
+                android:background="#A6B80000"
+                android:text="@string/skin_o_6_description"
+                app:drawableStartCompat="@drawable/ic_skins_6" />
+
+            <TextView
+                android:id="@+id/skin_o_7"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="25dp"
+                android:layout_marginTop="25dp"
+                android:background="#A6B80000"
+                android:text="@string/skin_o_7_description"
+                app:drawableStartCompat="@drawable/ic_skins_7" />
+
+            <TextView
+                android:id="@+id/skin_o_8"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="25dp"
+                android:layout_marginTop="25dp"
+                android:background="#A6B80000"
+                android:text="@string/skin_o_8_description"
+                app:drawableStartCompat="@drawable/ic_skins_8" />
         </LinearLayout>
 
     </ScrollView>
