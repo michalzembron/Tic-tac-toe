@@ -58,9 +58,9 @@ public class MainActivity extends AppCompatActivity {
 
         //Dodawanie domyślnego skina do zakupionych
         Skins skins = new Skins();
-        skins.setBoughtSkins(0);
-        skins.setBoughtSkins(3);
-        Log.i("dddd",String.valueOf(skins.getBoughtSkins()));
+        //skins.setBoughtSkins(0);
+        //skins.setBoughtSkins(3);
+        //Log.i("dddd",String.valueOf(skins.getBoughtSkins()));
         Currency currrency = new Currency();
         currrency.setCurrency(150);
 

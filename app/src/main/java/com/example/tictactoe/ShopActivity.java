@@ -37,6 +37,8 @@ public class ShopActivity extends AppCompatActivity {
 
         assignTextViews();
         assignListPrice();
+
+        Log.i("_KUPIONE SKINY", skins.getBoughtSkins());
     }
 
     // Grey  = #A6858585
@@ -117,6 +119,7 @@ public class ShopActivity extends AppCompatActivity {
             });
             builder.show();
         }
+        Log.i("_KUPIONE SKINY", skins.getBoughtSkins());
     }
 
     @Override

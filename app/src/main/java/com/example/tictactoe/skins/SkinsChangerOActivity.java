@@ -72,11 +72,11 @@ public class SkinsChangerOActivity extends AppCompatActivity {
             textView.setBackgroundColor(Color.parseColor("#A6B80000"));
             textView.setClickable(false);
         }
-        ArrayList<Integer> boughtSkins = skins.getBoughtSkins();
+        /*ArrayList<Integer> boughtSkins = skins.getBoughtSkins();
         for(int i = 0; i < boughtSkins.size(); i++){
             textViews[boughtSkins.get(i)].setBackgroundColor(Color.parseColor("#A643CD49"));
             textViews[boughtSkins.get(i)].setClickable(true);
-        }
+        }*/
     }
 
     @Override

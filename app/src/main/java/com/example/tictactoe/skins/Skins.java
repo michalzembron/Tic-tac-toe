@@ -11,7 +11,6 @@ public class Skins {
     private static String unlocked_skins;
     private String CURRENT_X_SKIN;
     private String CURRENT_O_SKIN;
-    private ArrayList<Integer> boughtSkins = new ArrayList<>();
 
     public void setUnlockedSkins(String unlocked_skins){
         SharedPreferences settings = GetContext.getAppContext().getSharedPreferences("unlockedSkinsSettings", 0);
@@ -31,6 +30,19 @@ public class Skins {
         SharedPreferences settings = GetContext.getAppContext().getSharedPreferences("OSkinSettings", 0);
         SharedPreferences.Editor editor = settings.edit();
         editor.putString("oSkin",CURRENT_O_SKIN);
+        editor.apply();
+    }
+
+    public void setBoughtSkins(Integer boughtSkins){
+        SharedPreferences settings = GetContext.getAppContext().getSharedPreferences("BoughtSkins", 0);
+        SharedPreferences.Editor editor = settings.edit();
+        StringBuilder myString = new StringBuilder(getBoughtSkins());
+        if (String.valueOf(myString).equals("")){
+            editor.putString("BoughtSkinsList", "YNNNNNNNN");
+        } else {
+            myString.setCharAt(boughtSkins, 'Y');
+            editor.putString("BoughtSkinsList", String.valueOf(myString));
+        }
         editor.apply();
     }
 
@@ -64,11 +76,12 @@ public class Skins {
         return CURRENT_O_SKIN;
     }
 
-    public void setBoughtSkins(int skinNumber){
-        boughtSkins.add(skinNumber);
-    }
-
-    public ArrayList<Integer> getBoughtSkins(){
-        return boughtSkins;
+    public String getBoughtSkins(){
+        SharedPreferences settings = GetContext.getAppContext().getSharedPreferences("BoughtSkins", 0);
+        String BoughtSkinsList = (settings.getString("BoughtSkinsList", ""));
+        if (BoughtSkinsList.equals("")){
+            setCurrentOSkin("YNNNNNNNN");
+        }
+        return BoughtSkinsList;
     }
 }
