@@ -11,6 +11,8 @@ import android.widget.TextView;
 import com.example.tictactoe.R;
 import com.example.tictactoe.SettingsActivity;
 
+import java.util.ArrayList;
+
 public class SkinsChangerOActivity extends AppCompatActivity {
     Skins skins = new Skins();
 
@@ -29,6 +31,7 @@ public class SkinsChangerOActivity extends AppCompatActivity {
 
         assignTextViews();
 
+        setBoughtSkinBa();
         setCurrentSkin();
     }
 
@@ -54,7 +57,7 @@ public class SkinsChangerOActivity extends AppCompatActivity {
     }
 
     private void setCurrentSkin(){
-        setOtherButtonsGrey();
+        //setOtherButtonsGrey();
         int currentSkin = Integer.parseInt(skins.getCurrentOSkin().substring(skins.getCurrentOSkin().length() - 1));
         textViews[currentSkin].setBackgroundColor(Color.parseColor("#A643CD49"));
     }
@@ -62,6 +65,18 @@ public class SkinsChangerOActivity extends AppCompatActivity {
     private void setButtonBackgroundColor(TextView textView){
         setOtherButtonsGrey();
         textView.setBackgroundColor(Color.parseColor("#A643CD49"));
+    }
+
+    private void setBoughtSkinBa(){
+        for (TextView textView : textViews) {
+            textView.setBackgroundColor(Color.parseColor("#A6B80000"));
+            textView.setClickable(false);
+        }
+        ArrayList<Integer> boughtSkins = skins.getBoughtSkins();
+        for(int i = 0; i < boughtSkins.size(); i++){
+            textViews[boughtSkins.get(i)].setBackgroundColor(Color.parseColor("#A643CD49"));
+            textViews[boughtSkins.get(i)].setClickable(true);
+        }
     }
 
     @Override

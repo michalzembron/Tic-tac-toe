@@ -5,10 +5,13 @@ import android.util.Log;
 
 import com.example.tictactoe.GetContext;
 
+import java.util.ArrayList;
+
 public class Skins {
     private static String unlocked_skins;
     private String CURRENT_X_SKIN;
     private String CURRENT_O_SKIN;
+    private ArrayList<Integer> boughtSkins = new ArrayList<>();
 
     public void setUnlockedSkins(String unlocked_skins){
         SharedPreferences settings = GetContext.getAppContext().getSharedPreferences("unlockedSkinsSettings", 0);
@@ -59,5 +62,13 @@ public class Skins {
         }
         Log.i("---getCurrentOSkin", CURRENT_O_SKIN);
         return CURRENT_O_SKIN;
+    }
+
+    public void setBoughtSkins(int skinNumber){
+        boughtSkins.add(skinNumber);
+    }
+
+    public ArrayList<Integer> getBoughtSkins(){
+        return boughtSkins;
     }
 }

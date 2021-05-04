@@ -9,7 +9,9 @@ import android.widget.Button;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatDelegate;
 
+import com.example.tictactoe.currency.Currency;
 import com.example.tictactoe.installation.Installation;
+import com.example.tictactoe.skins.Skins;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
 import com.google.android.gms.ads.MobileAds;
@@ -53,6 +55,15 @@ public class MainActivity extends AppCompatActivity {
         DatabaseReference database = FirebaseDatabase.getInstance().getReference();
 
         Log.i("TEST", database.getDatabase().getReference().toString());
+
+        //Dodawanie domyślnego skina do zakupionych
+        Skins skins = new Skins();
+        skins.setBoughtSkins(0);
+        skins.setBoughtSkins(3);
+        Log.i("dddd",String.valueOf(skins.getBoughtSkins()));
+        Currency currrency = new Currency();
+        currrency.setCurrency(150);
+
 
         //Generowanie i/lub odczyt ID uzytkownika
         Installation.id(this);

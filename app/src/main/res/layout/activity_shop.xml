@@ -11,8 +11,109 @@
       android:id="@+id/textViewCurrency"
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
-      app:layout_constraintBottom_toBottomOf="parent"
+      android:layout_marginStart="371dp"
+      android:layout_marginTop="25dp"
+      app:layout_constraintBottom_toBottomOf="@+id/scrollView2"
       app:layout_constraintEnd_toEndOf="parent"
-      app:layout_constraintStart_toStartOf="parent"
-      app:layout_constraintTop_toTopOf="parent" />
+      app:layout_constraintHorizontal_bias="0.902"
+      app:layout_constraintStart_toEndOf="@+id/scrollView2"
+      app:layout_constraintStart_toStartOf="@+id/scrollView2"
+      app:layout_constraintTop_toTopOf="@+id/scrollView2"
+      app:layout_constraintVertical_bias="0.035"
+      android:layout_marginEnd="20dp"/>
+
+  <ScrollView
+      android:id="@+id/scrollView2"
+      android:layout_width="match_parent"
+      android:layout_height="match_parent"
+      tools:layout_editor_absoluteX="-172dp"
+      tools:layout_editor_absoluteY="33dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+      <TextView
+          android:id="@+id/skin_o_1"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_marginStart="25dp"
+          android:layout_marginTop="25dp"
+          android:background="#A6B80000"
+          android:text="Dog. Cost: 150"
+          app:drawableStartCompat="@drawable/ic_skins_1" />
+
+      <TextView
+          android:id="@+id/skin_o_2"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_marginStart="25dp"
+          android:layout_marginTop="25dp"
+          android:background="#A6B80000"
+          android:text="Cat. Cost: 300"
+          app:drawableStartCompat="@drawable/ic_skins_2" />
+
+      <TextView
+          android:id="@+id/skin_o_3"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_marginStart="25dp"
+          android:layout_marginTop="25dp"
+          android:background="#A6B80000"
+          android:text="Carrot. Cost: 450"
+          app:drawableStartCompat="@drawable/ic_skins_3" />
+
+      <TextView
+          android:id="@+id/skin_o_4"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_marginStart="25dp"
+          android:layout_marginTop="25dp"
+          android:background="#A6B80000"
+          android:text="Helicopter. Cost: 600"
+          app:drawableStartCompat="@drawable/ic_skins_4" />
+
+      <TextView
+          android:id="@+id/skin_o_5"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_marginStart="25dp"
+          android:layout_marginTop="25dp"
+          android:background="#A6B80000"
+          android:text="Nurse. Cost: 750"
+          app:drawableStartCompat="@drawable/ic_skins_5" />
+
+      <TextView
+          android:id="@+id/skin_o_6"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_marginStart="25dp"
+          android:layout_marginTop="25dp"
+          android:background="#A6B80000"
+          android:text="Police. Cost: 900"
+          app:drawableStartCompat="@drawable/ic_skins_6" />
+
+      <TextView
+          android:id="@+id/skin_o_7"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_marginStart="25dp"
+          android:layout_marginTop="25dp"
+          android:background="#A6B80000"
+          android:text="Rainbow. Cost: 1050"
+          app:drawableStartCompat="@drawable/ic_skins_7" />
+
+      <TextView
+          android:id="@+id/skin_o_8"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_marginStart="25dp"
+          android:layout_marginTop="25dp"
+          android:background="#A6B80000"
+          android:text="Sun. Cost: 1200"
+          app:drawableStartCompat="@drawable/ic_skins_8" />
+    </LinearLayout>
+
+  </ScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>
