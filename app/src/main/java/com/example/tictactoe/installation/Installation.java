@@ -2,8 +2,6 @@ package com.example.tictactoe.installation;
 
 import android.content.Context;
 
-import com.google.firebase.database.ValueEventListener;
-
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;

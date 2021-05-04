@@ -28,7 +28,7 @@ public class SkinsChangerXActivity extends AppCompatActivity {
         skins.getCurrentXSkin();
 
         assignTextViews();
-
+        setBoughtSkinBa();
         setCurrentSkin();
     }
 
@@ -42,26 +42,48 @@ public class SkinsChangerXActivity extends AppCompatActivity {
             textViews[i].setOnClickListener(view -> {
                 Log.i("SkinsChangerOActivity","skin_x_" + temp +" clicked !");
                 setButtonBackgroundColor(textViews[temp]);
-                skins.setCurrentXSkin("ic_skins_" + temp);
+                if (temp == 0){
+                    skins.setCurrentXSkin("ic_skins_x_" + temp);
+                } else {
+                    skins.setCurrentXSkin("ic_skins_" + temp);
+                }
             });
         }
     }
 
-    private void setOtherButtonsGrey() {
-        for (TextView textView : textViews) {
-            textView.setBackgroundColor(Color.parseColor("#A6858585"));
-        }
-    }
-
     private void setCurrentSkin(){
-        setOtherButtonsGrey();
         int currentSkin = Integer.parseInt(skins.getCurrentXSkin().substring(skins.getCurrentXSkin().length() - 1));
         textViews[currentSkin].setBackgroundColor(Color.parseColor("#A643CD49"));
     }
 
     private void setButtonBackgroundColor(TextView textView){
-        setOtherButtonsGrey();
+        StringBuilder myString = new StringBuilder(skins.getBoughtSkins());
+
+        for(int i = 0; i < myString.length(); i++){
+
+            if(myString.charAt(i) == 'Y'){
+                textViews[i].setBackgroundColor(Color.parseColor("#A6858585"));
+                textViews[i].setClickable(true);
+            }
+        }
+
         textView.setBackgroundColor(Color.parseColor("#A643CD49"));
+    }
+
+    private void setBoughtSkinBa(){
+        for (TextView textView : textViews) {
+            textView.setBackgroundColor(Color.parseColor("#A6B80000"));
+            textView.setClickable(false);
+        }
+        StringBuilder myString = new StringBuilder(skins.getBoughtSkins());
+
+        for(int i = 0; i < myString.length(); i++){
+
+            if(myString.charAt(i) == 'Y'){
+                textViews[i].setBackgroundColor(Color.parseColor("#A6858585"));
+                textViews[i].setClickable(true);
+            }
+        }
     }
 
     @Override
