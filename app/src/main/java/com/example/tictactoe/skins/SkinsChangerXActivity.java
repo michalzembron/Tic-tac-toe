@@ -42,7 +42,11 @@ public class SkinsChangerXActivity extends AppCompatActivity {
             textViews[i].setOnClickListener(view -> {
                 Log.i("SkinsChangerOActivity","skin_x_" + temp +" clicked !");
                 setButtonBackgroundColor(textViews[temp]);
-                skins.setCurrentXSkin("ic_skins_" + temp);
+                if (temp == 0){
+                    skins.setCurrentXSkin("ic_skins_x_" + temp);
+                } else {
+                    skins.setCurrentXSkin("ic_skins_" + temp);
+                }
             });
         }
     }

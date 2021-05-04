@@ -58,12 +58,13 @@ public class MainActivity extends AppCompatActivity {
 
         //Dodawanie domyślnego skina do zakupionych
         Skins skins = new Skins();
-        //skins.setBoughtSkins(0);
-        //skins.setBoughtSkins(3);
-        //Log.i("dddd",String.valueOf(skins.getBoughtSkins()));
         Currency currrency = new Currency();
-      //  currrency.setCurrency(150);
 
+        //DO TESTOWANIA WALUTY !
+        Button buttonDebugAddCoins = findViewById(R.id.buttonDebugAddCoins);
+        buttonDebugAddCoins.setOnClickListener(view -> {
+            currrency.setCurrency(currrency.getCurrency() + 1000);
+        });
 
         //Generowanie i/lub odczyt ID uzytkownika
         Installation.id(this);

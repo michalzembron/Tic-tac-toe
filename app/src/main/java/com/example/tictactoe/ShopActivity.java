@@ -14,9 +14,6 @@ import android.widget.Toast;
 
 import com.example.tictactoe.currency.Currency;
 import com.example.tictactoe.skins.Skins;
-import com.example.tictactoe.skins.SkinsChangerXActivity;
-
-import java.util.ArrayList;
 
 public class ShopActivity extends AppCompatActivity {
 
@@ -24,16 +21,15 @@ public class ShopActivity extends AppCompatActivity {
     Skins skins = new Skins();
     private final TextView[] textViews = new TextView[9];
     private Integer[] listPrice = new Integer[9];
+    TextView textViewCurrency;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_shop);
 
-        TextView textViewCurrency = findViewById(R.id.textViewCurrency);
+        textViewCurrency = findViewById(R.id.textViewCurrency);
         textViewCurrency.setText(currency.getCurrency().toString());
-
-        //skins.getCurrentXSkin();
 
         assignTextViews();
         assignListPrice();
@@ -56,9 +52,7 @@ public class ShopActivity extends AppCompatActivity {
             int temp = i;
             textViews[i].setOnClickListener(view -> {
                 Log.i("ShopActivity","skin_o_" + temp +" clicked !");
-                //setButtonBackgroundColor(textViews[temp]);
                 buySkinButton(temp);
-                //skins.setCurrentXSkin("ic_skins_" + temp);
             });
         }
     }
@@ -70,12 +64,6 @@ public class ShopActivity extends AppCompatActivity {
         for(int i = 1; i < textViews.length; i++){
             listPrice[i] = cost;
             cost = cost + 150;
-        }
-    }
-
-    private void setOtherButtonsGrey() {
-        for (TextView textView : textViews) {
-            textView.setBackgroundColor(Color.parseColor("#A6858585"));
         }
     }
 
@@ -135,6 +123,7 @@ public class ShopActivity extends AppCompatActivity {
                     textViews[buttonNumber].setClickable(false);
                     skins.setBoughtSkins(buttonNumber);
                     currency.setCurrency(currency.getCurrency() - listPrice[buttonNumber]);
+                    textViewCurrency.setText(currency.getCurrency().toString());
                 }
             });
             builder.show();

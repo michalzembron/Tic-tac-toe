@@ -11,8 +11,6 @@ import android.widget.TextView;
 import com.example.tictactoe.R;
 import com.example.tictactoe.SettingsActivity;
 
-import java.util.ArrayList;
-
 public class SkinsChangerOActivity extends AppCompatActivity {
     Skins skins = new Skins();
 
@@ -44,7 +42,11 @@ public class SkinsChangerOActivity extends AppCompatActivity {
             textViews[i].setOnClickListener(view -> {
                 Log.i("SkinsChangerOActivity","skin_o_" + temp +" clicked !");
                 setButtonBackgroundColor(textViews[temp]);
-                skins.setCurrentOSkin("ic_skins_" + temp);
+                if (temp == 0){
+                    skins.setCurrentOSkin("ic_skins_o_" + temp);
+                } else {
+                    skins.setCurrentOSkin("ic_skins_" + temp);
+                }
             });
         }
     }

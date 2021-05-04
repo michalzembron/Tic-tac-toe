@@ -26,11 +26,11 @@ public class ThemesActivity extends AppCompatActivity {
         // When user reopens the app
         // after applying dark/light mode
         if (isDarkModeOn) { AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
-            btnToggleDark.setText("Motyw jasny");
+            btnToggleDark.setText("Light Theme");
         }
         else {
             AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
-            btnToggleDark.setText("Motyw ciemny");
+            btnToggleDark.setText("Dark Theme");
         }
 
         btnToggleDark.setOnClickListener(new View.OnClickListener() {
@@ -51,7 +51,7 @@ public class ThemesActivity extends AppCompatActivity {
                 editor.apply();
 
                 // change text of Button
-                btnToggleDark.setText("Motyw jasny");
+                btnToggleDark.setText("Light Theme");
             }
             else {
 
@@ -65,7 +65,7 @@ public class ThemesActivity extends AppCompatActivity {
                 editor.apply();
 
                 // change text of Button
-                btnToggleDark.setText("Motyw ciemny");
+                btnToggleDark.setText("Dark Theme");
             }
         }});
     }
