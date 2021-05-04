@@ -22,8 +22,8 @@ public class ShopActivity extends AppCompatActivity {
 
     Currency currency = new Currency();
     Skins skins = new Skins();
-    private final TextView[] textViews = new TextView[8];
-    private Integer[] listPrice = new Integer[8];
+    private final TextView[] textViews = new TextView[9];
+    private Integer[] listPrice = new Integer[9];
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,10 +33,11 @@ public class ShopActivity extends AppCompatActivity {
         TextView textViewCurrency = findViewById(R.id.textViewCurrency);
         textViewCurrency.setText(currency.getCurrency().toString());
 
-        skins.getCurrentXSkin();
+        //skins.getCurrentXSkin();
 
         assignTextViews();
         assignListPrice();
+        setColorsBoughtSkins();
 
         Log.i("_KUPIONE SKINY", skins.getBoughtSkins());
     }
@@ -48,6 +49,7 @@ public class ShopActivity extends AppCompatActivity {
     private void assignTextViews() {
         for (int i = 1; i < textViews.length; i++) {
             String textViewID = "skin_o_" + i;
+            Log.i("_KUPIONE SKINY", "skin_o_" + i);
             int resourceID = getResources().getIdentifier(textViewID, "id", getPackageName());
             Log.i("textViews", String.valueOf(resourceID));
             textViews[i] = findViewById(resourceID);
@@ -81,10 +83,28 @@ public class ShopActivity extends AppCompatActivity {
         textView.setBackgroundColor(Color.parseColor("#A643CD49"));
     }
 
+    private void setColorsBoughtSkins(){
+        Skins skins = new Skins();
+        StringBuilder myString = new StringBuilder(skins.getBoughtSkins());
+
+        Log.i("_KUPIONE SKINY", String.valueOf(myString.length()));
+
+        for (int i = 1; i < myString.length(); i++) {
+
+            if(myString.charAt(i) == 'Y'){
+                Log.i("_KUPIONE SKINY", "4444");
+                textViews[i].setBackgroundColor(Color.parseColor("#A643CD49"));
+                textViews[i].setClickable(false);
+            } else {
+                textViews[i].setBackgroundColor(Color.parseColor("#A6B80000"));
+            }
+
+        }
+    }
+
     private void buySkinButton(int buttonNumber){
 
         Currency currency = new Currency();
-        Skins skin = new Skins();
 
         if(currency.getCurrency() < listPrice[buttonNumber]){
 

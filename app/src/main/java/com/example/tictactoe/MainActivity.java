@@ -62,7 +62,7 @@ public class MainActivity extends AppCompatActivity {
         //skins.setBoughtSkins(3);
         //Log.i("dddd",String.valueOf(skins.getBoughtSkins()));
         Currency currrency = new Currency();
-        currrency.setCurrency(150);
+      //  currrency.setCurrency(150);
 
 
         //Generowanie i/lub odczyt ID uzytkownika

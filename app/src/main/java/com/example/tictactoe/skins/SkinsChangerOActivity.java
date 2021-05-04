@@ -30,7 +30,6 @@ public class SkinsChangerOActivity extends AppCompatActivity {
         skins.getCurrentOSkin();
 
         assignTextViews();
-
         setBoughtSkinBa();
         setCurrentSkin();
     }
@@ -50,20 +49,22 @@ public class SkinsChangerOActivity extends AppCompatActivity {
         }
     }
 
-    private void setOtherButtonsGrey() {
-        for (TextView textView : textViews) {
-            textView.setBackgroundColor(Color.parseColor("#A6858585"));
-        }
-    }
-
     private void setCurrentSkin(){
-        //setOtherButtonsGrey();
         int currentSkin = Integer.parseInt(skins.getCurrentOSkin().substring(skins.getCurrentOSkin().length() - 1));
         textViews[currentSkin].setBackgroundColor(Color.parseColor("#A643CD49"));
     }
 
     private void setButtonBackgroundColor(TextView textView){
-        setOtherButtonsGrey();
+        StringBuilder myString = new StringBuilder(skins.getBoughtSkins());
+
+        for(int i = 0; i < myString.length(); i++){
+
+            if(myString.charAt(i) == 'Y'){
+                textViews[i].setBackgroundColor(Color.parseColor("#A6858585"));
+                textViews[i].setClickable(true);
+            }
+        }
+
         textView.setBackgroundColor(Color.parseColor("#A643CD49"));
     }
 
@@ -72,11 +73,15 @@ public class SkinsChangerOActivity extends AppCompatActivity {
             textView.setBackgroundColor(Color.parseColor("#A6B80000"));
             textView.setClickable(false);
         }
-        /*ArrayList<Integer> boughtSkins = skins.getBoughtSkins();
-        for(int i = 0; i < boughtSkins.size(); i++){
-            textViews[boughtSkins.get(i)].setBackgroundColor(Color.parseColor("#A643CD49"));
-            textViews[boughtSkins.get(i)].setClickable(true);
-        }*/
+        StringBuilder myString = new StringBuilder(skins.getBoughtSkins());
+
+        for(int i = 0; i < myString.length(); i++){
+
+            if(myString.charAt(i) == 'Y'){
+                textViews[i].setBackgroundColor(Color.parseColor("#A6858585"));
+                textViews[i].setClickable(true);
+            }
+        }
     }
 
     @Override
