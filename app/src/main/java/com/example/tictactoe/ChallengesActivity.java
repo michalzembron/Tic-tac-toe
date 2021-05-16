@@ -3,6 +3,7 @@ package com.example.tictactoe;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.ImageView;
@@ -39,16 +40,43 @@ public class ChallengesActivity extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 int iloscWygranychMeczy = snapshot.child("Users").child(id).child("Wins").getValue(Integer.class);
-                if(iloscWygranychMeczy>=5) meczy5.setImageDrawable(getResources().getDrawable(R.drawable.ic_mark));
-                if(iloscWygranychMeczy>=10) meczy10.setImageDrawable(getResources().getDrawable(R.drawable.ic_mark));
-                if(iloscWygranychMeczy>=15) meczy15.setImageDrawable(getResources().getDrawable(R.drawable.ic_mark));
-                if(iloscWygranychMeczy>=50) meczy50.setImageDrawable(getResources().getDrawable(R.drawable.ic_mark));
-                if(iloscWygranychMeczy>=75) meczy75.setImageDrawable(getResources().getDrawable(R.drawable.ic_mark));
-                if(iloscWygranychMeczy>=100) meczy100.setImageDrawable(getResources().getDrawable(R.drawable.ic_mark));
-                if(iloscWygranychMeczy>=250) meczy250.setImageDrawable(getResources().getDrawable(R.drawable.ic_mark));
-                if(iloscWygranychMeczy>=500) meczy500.setImageDrawable(getResources().getDrawable(R.drawable.ic_mark));
-                if(iloscWygranychMeczy>=1000) meczy1000.setImageDrawable(getResources().getDrawable(R.drawable.ic_mark));
-                wygraneMeczeText.setText(iloscWygranychMeczy);
+                if(iloscWygranychMeczy>=5) {
+                    meczy5.setImageDrawable(getResources().getDrawable(R.drawable.ic_mark));
+                    meczy5.setColorFilter(Color.parseColor("#A643CD49"));
+                }
+                if(iloscWygranychMeczy>=10) {
+                    meczy10.setImageDrawable(getResources().getDrawable(R.drawable.ic_mark));
+                    meczy10.setColorFilter(Color.parseColor("#A643CD49"));
+                }
+                if(iloscWygranychMeczy>=15) {
+                    meczy15.setImageDrawable(getResources().getDrawable(R.drawable.ic_mark));
+                    meczy15.setColorFilter(Color.parseColor("#A643CD49"));
+                }
+                if(iloscWygranychMeczy>=50) {
+                    meczy50.setImageDrawable(getResources().getDrawable(R.drawable.ic_mark));
+                    meczy50.setColorFilter(Color.parseColor("#A643CD49"));
+                }
+                if(iloscWygranychMeczy>=75) {
+                    meczy75.setImageDrawable(getResources().getDrawable(R.drawable.ic_mark));
+                    meczy75.setColorFilter(Color.parseColor("#A643CD49"));
+                }
+                if(iloscWygranychMeczy>=100) {
+                    meczy100.setImageDrawable(getResources().getDrawable(R.drawable.ic_mark));
+                    meczy100.setColorFilter(Color.parseColor("#A643CD49"));
+                }
+                if(iloscWygranychMeczy>=250) {
+                    meczy250.setImageDrawable(getResources().getDrawable(R.drawable.ic_mark));
+                    meczy250.setColorFilter(Color.parseColor("#A643CD49"));
+                }
+                if(iloscWygranychMeczy>=500) {
+                    meczy500.setImageDrawable(getResources().getDrawable(R.drawable.ic_mark));
+                    meczy500.setColorFilter(Color.parseColor("#A643CD49"));
+                }
+                if(iloscWygranychMeczy>=1000) {
+                    meczy1000.setImageDrawable(getResources().getDrawable(R.drawable.ic_mark));
+                    meczy1000.setColorFilter(Color.parseColor("#A643CD49"));
+                }
+                wygraneMeczeText.setText(String.valueOf(iloscWygranychMeczy));
             }
 
             @Override
