@@ -80,6 +80,11 @@ public class MainActivity extends AppCompatActivity {
             Intent intent = new Intent(view.getContext(), StatisticsActivity.class);
             view.getContext().startActivity(intent);});
 
+        Button buttonChallenges = findViewById(R.id.buttonChallenges);
+        buttonChallenges.setOnClickListener(view -> {
+            Intent intent = new Intent(view.getContext(), ChallengesActivity.class);
+            view.getContext().startActivity(intent);});
+
         Button buttonShop = findViewById(R.id.buttonShop);
         buttonShop.setOnClickListener(view -> {
             Intent intent = new Intent(view.getContext(), ShopActivity.class);

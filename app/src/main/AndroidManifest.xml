@@ -12,16 +12,17 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.TicTacToe">
+        <activity android:name=".ChallengesActivity"></activity>
 
         <meta-data
             android:name="com.google.android.gms.ads.APPLICATION_ID"
-            android:value="ca-app-pub-3940256099942544~3347511713"/>
+            android:value="ca-app-pub-3940256099942544~3347511713" />
 
-        <activity android:name=".ThemesActivity"></activity>
+        <activity android:name=".ThemesActivity" />
         <activity android:name=".skins.SkinsChangerOActivity" />
         <activity android:name=".skins.SkinsCurrentActivity" />
         <activity android:name=".skins.SkinsChangerXActivity" />
-        <activity android:name=".BoardMultiplayerActivity"></activity>
+        <activity android:name=".BoardMultiplayerActivity" />
         <activity android:name=".PlayMultiplayerActivity" />
         <activity android:name=".PlaySingleplayerActivity" />
         <activity android:name=".SettingsActivity" />
