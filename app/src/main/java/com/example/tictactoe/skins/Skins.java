@@ -39,10 +39,10 @@ public class Skins {
     public void setBoughtSkins(Integer boughtSkins){
         SharedPreferences settings = getContext.getAppContext().getSharedPreferences("BoughtSkins", Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = settings.edit();
-        StringBuilder myString = new StringBuilder(getBoughtSkins());
-        if (String.valueOf(myString).equals("") || boughtSkins == 0){
+        if (boughtSkins == 0){
             editor.putString("BoughtSkinsList", "YNNNNNNNN");
         } else {
+            StringBuilder myString = new StringBuilder(getBoughtSkins());
             myString.setCharAt(boughtSkins, 'Y');
             editor.putString("BoughtSkinsList", String.valueOf(myString));
         }
@@ -84,6 +84,8 @@ public class Skins {
         String BoughtSkinsList = (settings.getString("BoughtSkinsList", ""));
         if (BoughtSkinsList.equals("")){
             setBoughtSkins(0);
+            BoughtSkinsList = (settings.getString("BoughtSkinsList", ""));
+            return BoughtSkinsList;
         }
         return BoughtSkinsList;
     }
