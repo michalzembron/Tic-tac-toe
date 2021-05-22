@@ -23,15 +23,17 @@ public class PlayMultiplayerActivity extends AppCompatActivity {
 
     private DatabaseReference mDatabase;
     Skins skins = new Skins();
+    Connection connection;
+    Installation installation = new Installation();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_play_multiplayer);
 
-        Connection connection = new Connection();
+        connection = new Connection();
         mDatabase = connection.getDatabaseReference();
-        String id = Installation.id(this);
+        String id = installation.id(this);
         Button newGameButton = findViewById(R.id.new_game);
         newGameButton.setOnClickListener(new View.OnClickListener(){
             @Override

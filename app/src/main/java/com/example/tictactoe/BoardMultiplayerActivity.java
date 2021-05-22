@@ -23,7 +23,8 @@ import com.google.firebase.database.ValueEventListener;
 public class BoardMultiplayerActivity extends AppCompatActivity implements View.OnClickListener {
     DatabaseReference database = FirebaseDatabase.getInstance().getReference();
 
-    String id = Installation.id(this);
+    private Installation installation = new Installation();
+    String id = installation.id(this);
     private final ImageButton[] buttons = new ImageButton[9];
     private int winningPos = -1;
     boolean isThisPlayerOne;

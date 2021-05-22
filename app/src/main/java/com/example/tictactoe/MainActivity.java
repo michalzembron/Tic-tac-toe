@@ -25,6 +25,7 @@ public class MainActivity extends AppCompatActivity {
     private String TAG = "MainActivity";
 
     private AdView adview;
+    private Installation installation = new Installation();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -67,8 +68,8 @@ public class MainActivity extends AppCompatActivity {
         });
 
         //Generowanie i/lub odczyt ID uzytkownika
-        Installation.id(this);
-        Log.i("______User ID", Installation.id(this));
+        installation.id(this);
+        Log.i("______User ID", installation.id(this));
 
         Button buttonPlay = findViewById(R.id.buttonPlay);
         buttonPlay.setOnClickListener(view -> {

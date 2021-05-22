@@ -18,6 +18,8 @@ import com.google.firebase.database.ValueEventListener;
 
 public class ChallengesActivity extends AppCompatActivity {
 
+    private Installation installation = new Installation();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -34,7 +36,7 @@ public class ChallengesActivity extends AppCompatActivity {
         ImageView meczy1000 = findViewById(R.id.meczy1000Image);
         TextView wygraneMeczeText = (TextView)findViewById(R.id.iloscWygranychMeczyTekst);
         GetContext context= new GetContext();
-        String id = Installation.id(context);
+        String id = installation.id(context);
         DatabaseReference database = FirebaseDatabase.getInstance().getReference();
         database.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
