@@ -61,12 +61,6 @@ public class MainActivity extends AppCompatActivity {
         Skins skins = new Skins();
         Currency currrency = new Currency();
 
-        //DO TESTOWANIA WALUTY !
-        Button buttonDebugAddCoins = findViewById(R.id.buttonDebugAddCoins);
-        buttonDebugAddCoins.setOnClickListener(view -> {
-            currrency.setCurrency(currrency.getCurrency() + 1000);
-        });
-
         //Generowanie i/lub odczyt ID uzytkownika
         installation.id(this);
         Log.i("______User ID", installation.id(this));
