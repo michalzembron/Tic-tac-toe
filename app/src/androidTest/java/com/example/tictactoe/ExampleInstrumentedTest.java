@@ -1,8 +1,12 @@
 package com.example.tictactoe;
 
+import android.content.SharedPreferences;
+
+import androidx.appcompat.app.AppCompatDelegate;
 import androidx.test.ext.junit.runners.AndroidJUnit4;
 import androidx.test.rule.ActivityTestRule;
 
+import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -71,5 +75,24 @@ public class ExampleInstrumentedTest {
         onView(withId(R.id.skin_x_0)).perform(click());
         onView(withId(R.id.skin_x_1)).perform(click());
         onView(withId(R.id.skin_x_2)).perform(click());
+
+
+
     }
+
+    @Before
+    public void setUp() throws Exception{
+        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+    }
+
+    @Test
+    public void NightModeCheck()
+    {
+        onView(withId(R.id.buttonSettings)).perform(click());
+        onView(withId(R.id.buttonThemes)).perform(click());
+        onView(withId(R.id.btnToggleDark)).perform(click());
+        onView(withId(R.id.btnToggleDark)).check(matches(withText("Light Theme")));
+    }
+
+
 }
